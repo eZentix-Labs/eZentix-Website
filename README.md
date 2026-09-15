@@ -1,4 +1,4 @@
-# Charubala LLP — MERN stack
+# eZentix LLP — MERN stack
 
 The agency site, lead capture and customer portal, rebuilt as a full
 MERN app: **M**ongoDB + **E**xpress + **R**eact + **N**ode.
