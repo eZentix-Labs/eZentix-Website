@@ -1,0 +1,20 @@
+{
+  "name": "charubala-mern",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Charubala LLP — MERN stack site: React + Vite client, Express + MongoDB API",
+  "scripts": {
+    "install:all": "npm install && cd server && npm install && cd ../client && npm install",
+    "dev": "concurrently -n api,web -c magenta,cyan \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:mem": "concurrently -n api,web -c magenta,cyan \"npm:dev:server:mem\" \"npm:dev:client\"",
+    "dev:server": "cd server && npm run dev",
+    "dev:server:mem": "cd server && npm run dev:mem",
+    "dev:client": "cd client && npm run dev",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build",
+    "start": "cd server && npm start"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}

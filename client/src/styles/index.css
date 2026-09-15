@@ -1,0 +1,3345 @@
+/* ============================================================
+   SAHAJ TECH SOLUTIONS — design tokens
+   Palette is locked to PhonePe purple #5F259F by brief.
+   ============================================================ */
+
+/* Bengali display face — Li Alinur Tumatul (Lipighor, lipighor.com).
+   Free-font EULA requires a footer backlink credit when used as a
+   webfont — see Footer component / lipighor.com/condition.html. */
+@font-face {
+  font-family: 'Li Alinur Tumatul Unicode';
+  src: url('/fonts/LiAlinurTumatulUnicode.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Li Alinur Tumatul Unicode';
+  src: url('/fonts/LiAlinurTumatulUnicode-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Display face — Mooxy (befonts.com).
+   NOTE: this file covers A-Z, a-z, space and full stop ONLY. It has no
+   digits and no punctuation beyond the period, so it is scoped to
+   display type and never used for body copy, prices or form controls —
+   anything else falls back to Plus Jakarta Sans mid-word. */
+@font-face {
+  font-family: 'Mooxy';
+  src: url('/fonts/Mooxy.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Brand — do not change without sign-off */
+  --purple: #5f259f;
+  --purple-700: #4a1c7d;
+  --purple-900: #2e1150;
+  --purple-300: #9b6fd0;
+  --purple-tint: #f2ebfb;
+
+  /* Functional signal colours (floor states, statuses) */
+  --amber: #e08a1e;
+  --green: #12a06b;
+  --red: #cf3d3d;
+
+  /* Surfaces — light theme default */
+  --bg: #ffffff;
+  --bg-alt: #faf8fd;
+  --surface: #ffffff;
+  --surface-2: #f4f0f9;
+  --ink: #0b0a10;
+  --ink-2: #55506b;
+  --ink-3: #8a85a0;
+  --line: #e6e1ef;
+  --line-strong: #cec6de;
+  --shadow: 0 1px 2px rgba(11, 10, 16, 0.04), 0 8px 24px rgba(11, 10, 16, 0.06);
+  --shadow-lift: 0 2px 4px rgba(11, 10, 16, 0.05), 0 18px 44px rgba(47, 17, 80, 0.14);
+
+  /* Type */
+  --font-ui: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Mooxy', 'Plus Jakarta Sans', system-ui, sans-serif;
+  /* Caveat is served from Google Fonts alongside the reading face. The
+     fallbacks are named system scripts rather than bare `cursive`, which
+     resolves to Comic Sans on Windows. */
+  --font-script: 'Caveat', 'Bradley Hand', 'Segoe Script', 'Snell Roundhand', cursive;
+  --font-bn: 'Li Alinur Tumatul Unicode', 'Noto Sans Bengali', 'Plus Jakarta Sans', sans-serif;
+  --font-hi: 'Noto Sans Devanagari', 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Layout */
+  --max: 1140px;
+  --pad: 24px;
+  --r-sm: 10px;
+  --r: 16px;
+  --r-lg: 24px;
+  --r-pill: 999px;
+}
+
+[data-theme='dark'] {
+  --bg: #0b0a10;
+  --bg-alt: #110f18;
+  --surface: #15121d;
+  --surface-2: #1d1829;
+  --ink: #f6f4fa;
+  --ink-2: #b0a9c4;
+  --ink-3: #7c7594;
+  --line: #262034;
+  --line-strong: #362e48;
+  --purple-tint: #1e1430;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.3);
+  --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.5), 0 18px 44px rgba(0, 0, 0, 0.45);
+}
+
+/* Language-driven body font */
+[data-lang='bn'] {
+  --font-ui: 'Li Alinur Tumatul Unicode', 'Noto Sans Bengali', 'Plus Jakarta Sans', sans-serif;
+  --font-display: 'Li Alinur Tumatul Unicode', 'Noto Sans Bengali', sans-serif;
+}
+[data-lang='hi'] {
+  --font-ui: 'Noto Sans Devanagari', 'Plus Jakarta Sans', sans-serif;
+  --font-display: 'Noto Sans Devanagari', 'Plus Jakarta Sans', sans-serif;
+}
+
+/* ============================================================
+   Reset + base
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+}
+
+/* Display type: headings, the wordmark and the card titles that read as
+   headings. Everything numeric or punctuation-heavy stays on the UI face. */
+h1,
+h2,
+h3,
+.logo__name,
+.pillar h3,
+.plan__name,
+.cap h4,
+.who-card__title,
+.founder__name,
+.form-head h3,
+.orbit__label {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+
+/* Mooxy runs light next to Jakarta's 800 — nudge the optical weight back
+   with a hairline stroke rather than a faux-bold smear. */
+h1,
+h2,
+.who-card__title,
+.logo__name {
+  -webkit-text-stroke: 0.34px currentColor;
+}
+
+/* ============================================================
+   Typographic system
+   ------------------------------------------------------------
+   Three voices, each doing one job:
+     display  (Mooxy)   — the thing you see
+     ui       (Jakarta) — the thing you read
+     script   (Caveat)  — the thing said in a human voice
+   The script face is rationed on purpose. Used once or twice per
+   screen it reads as a person speaking; used everywhere it reads as
+   decoration and stops meaning anything.
+   ============================================================ */
+
+.script {
+  font-family: var(--font-script);
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  -webkit-text-stroke: 0;
+}
+
+/* Caveat sits small on the body — it needs a size bump to match the
+   x-height of the text around it. */
+.hero__sub .script,
+.who-card__title .script,
+.head h2 .script {
+  font-size: 1.24em;
+  line-height: 0.9;
+  color: var(--purple);
+  display: inline-block;
+  padding-right: 0.06em;
+}
+
+[data-theme='dark'] .hero__sub .script,
+[data-theme='dark'] .who-card__title .script,
+[data-theme='dark'] .head h2 .script {
+  color: var(--purple-300);
+}
+
+/* Bengali and Devanagari have no cursive equivalent here — fall back to
+   the reading face so the accent never turns into a rendering bug. */
+[data-lang='bn'] .script,
+[data-lang='hi'] .script {
+  font-family: var(--font-ui);
+  font-size: 1em;
+}
+
+/* Reading comfort. Measure capped near 68 characters, which is where
+   the eye stops losing the start of the next line, and leading opened
+   up slightly because Jakarta's tall x-height needs the room. */
+.hero__body,
+.head p,
+.who-card__body,
+.founder__body,
+.step p,
+.compare__card p {
+  line-height: 1.68;
+  max-width: 68ch;
+}
+
+/* Small caps labels: tracked out, because letterforms this small need
+   air to stay countable at a glance. */
+.eyebrow,
+.detail__k,
+.contact-card__k,
+.step__when {
+  font-feature-settings: 'tnum' 1;
+}
+
+/* The founder quote is the one line meant to sound spoken. */
+.founder__quote {
+  font-family: var(--font-script);
+  font-weight: 600;
+  font-size: clamp(23px, 2.6vw, 30px);
+  line-height: 1.28;
+  letter-spacing: 0.004em;
+  color: var(--purple);
+}
+
+[data-theme='dark'] .founder__quote {
+  color: var(--purple-300);
+}
+
+[data-lang='bn'] .founder__quote,
+[data-lang='hi'] .founder__quote {
+  font-family: var(--font-ui);
+  font-size: clamp(17px, 2vw, 21px);
+  font-weight: 700;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--purple-300);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+.band {
+  padding: 88px 0;
+}
+
+.band--tint {
+  background:
+    radial-gradient(1100px 420px at 8% 0%, var(--purple-tint), transparent 60%),
+    var(--bg-alt);
+}
+
+.band--purple {
+  background: var(--purple-900);
+  color: #fff;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--purple);
+}
+
+.lede {
+  font-size: 18px;
+  color: var(--ink-2);
+  max-width: 60ch;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: var(--r-pill);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--primary {
+  background: var(--purple);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(95, 37, 159, 0.28);
+}
+
+.btn--primary:hover {
+  background: var(--purple-700);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--line-strong);
+}
+
+.btn--ghost:hover {
+  border-color: var(--purple);
+  color: var(--purple);
+}
+
+.btn--onpurple {
+  background: #fff;
+  color: var(--purple-900);
+}
+
+.btn--onpurple:hover {
+  background: var(--purple-tint);
+}
+
+.btn--sm {
+  padding: 9px 16px;
+  font-size: 13.5px;
+}
+
+/* WhatsApp green rather than brand purple: on this one control the
+   platform's own colour is the fastest signal of where the tap goes. */
+.btn--wa {
+  background: #25d366;
+  color: #07301a;
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.26);
+}
+
+.btn--wa:hover {
+  background: #1fbb5a;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+/* ============================================================
+   Top bar
+   ============================================================ */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: var(--bg);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(150%) blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+
+.topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: 74px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+  letter-spacing: -0.022em;
+}
+
+/* The mark is the artwork itself — no coloured tile behind it, so the
+   peacock reads at header size instead of fighting a background. */
+.logo__mark {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  color: var(--purple);
+  flex: none;
+}
+
+.logo__mark .logo-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.logo__name {
+  font-size: 21px;
+  line-height: 1.1;
+}
+
+.logo-svg {
+  display: block;
+}
+
+.topbar__tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Location, relocated out of the hero — quiet by design. */
+.topbar__loc {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 4px;
+  padding: 5px 11px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line);
+  color: var(--ink-3);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.topbar__loc-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--green);
+  flex: none;
+}
+
+.segmented {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: var(--r-pill);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+
+.segmented button {
+  padding: 6px 11px;
+  border-radius: var(--r-pill);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink-3);
+  transition: all 0.15s ease;
+  line-height: 1.2;
+}
+
+.segmented button:hover {
+  color: var(--ink);
+}
+
+.segmented button[aria-pressed='true'] {
+  background: var(--purple);
+  color: #fff;
+}
+
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--r-pill);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  transition: all 0.15s ease;
+}
+
+/* Sound toggle: a soft ring while the tune is armed but not yet released
+   by the browser's autoplay policy — it stops the moment it plays. */
+.icon-btn {
+  position: relative;
+}
+
+.icon-btn--live {
+  color: var(--purple);
+}
+
+.icon-btn__ping {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid var(--purple);
+  opacity: 0;
+  animation: soundPing 2.4s ease-out infinite;
+  pointer-events: none;
+}
+
+/* Three bars bouncing under the speaker — a live indicator that costs
+   nothing and tells you the tune is actually running. */
+.eq {
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5px;
+  height: 8px;
+}
+
+.eq i {
+  width: 2px;
+  border-radius: 1px;
+  background: currentColor;
+  animation: eqBar 1.05s ease-in-out infinite;
+}
+
+.eq i:nth-child(1) { height: 4px; animation-delay: -0.2s; }
+.eq i:nth-child(2) { height: 8px; animation-delay: -0.55s; }
+.eq i:nth-child(3) { height: 5px; animation-delay: -0.85s; }
+
+@keyframes eqBar {
+  0%, 100% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eq i { animation: none; }
+}
+
+@keyframes soundPing {
+  0% { transform: scale(0.85); opacity: 0.55; }
+  70%, 100% { transform: scale(1.28); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon-btn__ping { animation: none; }
+}
+
+
+.icon-btn:hover {
+  border-color: var(--purple);
+  color: var(--purple);
+}
+
+.modal .icon-btn {
+  font-size: 22px;
+  line-height: 1;
+  flex: none;
+}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 76px 0 88px;
+  background: var(--bg);
+}
+
+/* Color-graded mesh — several soft radial lights instead of one flat
+   glow, so the purple has depth rather than sitting as a flat tint. */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(720px 520px at 82% -8%, rgba(95, 37, 159, 0.24), transparent 60%),
+    radial-gradient(560px 420px at 100% 55%, rgba(155, 111, 208, 0.16), transparent 65%),
+    radial-gradient(480px 380px at -6% 92%, rgba(95, 37, 159, 0.1), transparent 70%);
+  pointer-events: none;
+}
+
+[data-theme='dark'] .hero::before {
+  background:
+    radial-gradient(720px 520px at 82% -8%, rgba(155, 111, 208, 0.28), transparent 60%),
+    radial-gradient(560px 420px at 100% 55%, rgba(95, 37, 159, 0.3), transparent 65%),
+    radial-gradient(480px 380px at -6% 92%, rgba(95, 37, 159, 0.22), transparent 70%);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -180px;
+  right: -140px;
+  width: 620px;
+  height: 620px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(95, 37, 159, 0.18), transparent 68%);
+  pointer-events: none;
+}
+
+/* Entrance motion — staggered, one-shot on load. Above-the-fold
+   content doesn't need scroll-triggering, just a confident arrival. */
+@keyframes heroRise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero h1,
+.hero__sub,
+.hero__body,
+.hero__cta,
+.hero .orbit {
+  animation: heroRise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero h1 { animation-delay: 0.04s; }
+.hero__sub { animation-delay: 0.18s; }
+.hero__body { animation-delay: 0.25s; }
+.hero__cta { animation-delay: 0.33s; }
+.hero .orbit { animation-delay: 0.16s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero h1,
+  .hero__sub,
+  .hero__body,
+  .hero__cta,
+  .hero .orbit,
+  .orbit__item {
+    animation: none !important;
+  }
+}
+
+.hero__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1.02fr;
+  gap: 48px;
+  align-items: center;
+}
+
+
+.hero h1 {
+  font-size: clamp(36px, 5.2vw, 56px);
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+}
+
+.hero h1 span {
+  display: block;
+}
+
+.hero h1 span:last-child {
+  color: var(--purple);
+}
+
+.hero__sub {
+  margin-top: 18px;
+  font-size: clamp(17px, 2.3vw, 21px);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.hero__body {
+  margin-top: 18px;
+  font-size: 16.5px;
+  color: var(--ink-2);
+  max-width: 52ch;
+}
+
+.hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+/* Hero orbit — eleven products on three levels, revolving under the
+   feathers. DARK THEME ONLY: on light the ring system is hidden and the
+   mark stands alone, because the chips need a dark field to read as
+   lights orbiting rather than as clutter.
+
+   Each .orbit__item carries a chip round its level; the .orbit__chip
+   inside unwinds the same rotation so the label never tips over.
+   Negative animation-delay proportional to the index spaces each level
+   evenly from the first frame. Adjacent levels turn opposite ways. */
+.orbit {
+  position: relative;
+  justify-self: center;
+  width: clamp(360px, 40vw, 540px);
+  height: clamp(360px, 40vw, 540px);
+  --orbit-in: clamp(88px, 9vw, 132px);
+  --orbit-mid: clamp(128px, 13.2vw, 194px);
+  --orbit-out: clamp(168px, 17vw, 250px);
+  --mark: clamp(96px, 9.8vw, 136px);
+  --t-in: 30s;
+  --t-mid: 42s;
+  --t-out: 56s;
+}
+
+.orbit__ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 1px dashed var(--line);
+}
+
+.orbit__ring--in {
+  width: calc(var(--orbit-in) * 2);
+  height: calc(var(--orbit-in) * 2);
+  margin: calc(var(--orbit-in) * -1) 0 0 calc(var(--orbit-in) * -1);
+  border-style: solid;
+  border-color: var(--purple-tint);
+}
+
+.orbit__ring--mid {
+  width: calc(var(--orbit-mid) * 2);
+  height: calc(var(--orbit-mid) * 2);
+  margin: calc(var(--orbit-mid) * -1) 0 0 calc(var(--orbit-mid) * -1);
+}
+
+.orbit__ring--out {
+  width: calc(var(--orbit-out) * 2);
+  height: calc(var(--orbit-out) * 2);
+  margin: calc(var(--orbit-out) * -1) 0 0 calc(var(--orbit-out) * -1);
+}
+
+.orbit__level {
+  position: absolute;
+  inset: 0;
+}
+
+.orbit__level--in .orbit__item { --r: var(--orbit-in); --t: var(--t-in); animation-name: orbitCW; }
+.orbit__level--mid .orbit__item { --r: var(--orbit-mid); --t: var(--t-mid); animation-name: orbitCCW; }
+.orbit__level--out .orbit__item { --r: var(--orbit-out); --t: var(--t-out); animation-name: orbitCW; }
+
+.orbit__item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  animation-duration: var(--t);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-delay: calc(var(--t) / var(--n) * var(--i) * -1);
+}
+
+@keyframes orbitCW {
+  from { transform: rotate(0deg) translateX(var(--r)); }
+  to { transform: rotate(360deg) translateX(var(--r)); }
+}
+
+@keyframes orbitCCW {
+  from { transform: rotate(360deg) translateX(var(--r)); }
+  to { transform: rotate(0deg) translateX(var(--r)); }
+}
+
+/* Each chip unwinds exactly what its level winds. */
+@keyframes orbitSpinBack {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+
+@keyframes orbitSpinFwd {
+  from { transform: translate(-50%, -50%) rotate(-360deg); }
+  to { transform: translate(-50%, -50%) rotate(0deg); }
+}
+
+.orbit__chip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 19px 11px 12px;
+  border-radius: var(--r-pill);
+  white-space: nowrap;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  animation-name: orbitSpinBack;
+  animation-duration: var(--t);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-delay: calc(var(--t) / var(--n) * var(--i) * -1);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.orbit__level--mid .orbit__chip { animation-name: orbitSpinFwd; }
+
+.orbit__item:hover .orbit__chip {
+  box-shadow: var(--shadow-lift);
+  border-color: var(--purple-300);
+}
+
+.orbit__glyph {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--purple-tint);
+  color: var(--purple);
+  animation: glyphPulse 5.5s ease-in-out infinite;
+  animation-delay: calc(var(--i) * -0.7s);
+}
+
+@keyframes glyphPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(155, 111, 208, 0); }
+  50% { box-shadow: 0 0 0 6px rgba(155, 111, 208, 0.12); }
+}
+
+.orbit__glyph svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.orbit__label {
+  font-size: 17px;
+  color: var(--ink);
+  -webkit-text-stroke: 0.3px currentColor;
+}
+
+/* The mark: no disc, painted over the orbits so chips pass behind it. */
+.orbit__mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--mark);
+  height: var(--mark);
+  margin: calc(var(--mark) / -2) 0 0 calc(var(--mark) / -2);
+  color: var(--purple);
+  pointer-events: none;
+  animation: markBreathe 9s ease-in-out infinite;
+  filter: drop-shadow(0 10px 26px rgba(95, 37, 159, 0.22));
+}
+
+.orbit__mark::before {
+  content: '';
+  position: absolute;
+  inset: -22%;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--bg) 26%, transparent 64%);
+  opacity: 0.8;
+  z-index: -1;
+}
+
+.orbit__mark .logo-svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes markBreathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* ---- light theme ----
+   The ring system runs in both themes so the hero is the same object
+   whichever theme you pick; only the surface treatment changes. On
+   light the chips are solid white cards with a real shadow, because
+   the frosted-glass treatment that works on a dark field turns to mud
+   on a pale one. */
+[data-theme='light'] .orbit__chip {
+  background: #fff;
+  border-color: var(--line);
+  box-shadow: 0 2px 4px rgba(11, 10, 16, 0.05), 0 12px 30px rgba(47, 17, 80, 0.1);
+}
+
+[data-theme='light'] .orbit__ring {
+  border-color: rgba(95, 37, 159, 0.14);
+}
+
+[data-theme='light'] .orbit__ring--in {
+  border-color: rgba(95, 37, 159, 0.2);
+}
+
+[data-theme='light'] .orbit__mark {
+  filter: drop-shadow(0 14px 34px rgba(95, 37, 159, 0.26));
+}
+
+/* ---- dark theme: the ring system in its element ---- */
+[data-theme='dark'] .orbit__glyph {
+  color: var(--purple-300);
+  background: rgba(155, 111, 208, 0.14);
+}
+
+[data-theme='dark'] .orbit__chip {
+  background: rgba(32, 26, 48, 0.86);
+  border-color: rgba(155, 111, 208, 0.26);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme='dark'] .orbit__ring {
+  border-color: rgba(155, 111, 208, 0.16);
+}
+
+[data-theme='dark'] .orbit__ring--in {
+  border-color: rgba(155, 111, 208, 0.3);
+}
+
+[data-theme='dark'] .orbit__mark {
+  color: var(--purple-300);
+  filter: drop-shadow(0 0 34px rgba(155, 111, 208, 0.45));
+}
+
+[data-theme='dark'] .orbit__mark::before {
+  background: radial-gradient(circle, rgba(11, 10, 16, 0.92) 26%, transparent 66%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit__mark,
+  .orbit__glyph {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   Generic section head
+   ============================================================ */
+
+.head {
+  max-width: 62ch;
+  margin-bottom: 44px;
+}
+
+.head h2 {
+  font-size: clamp(27px, 4vw, 40px);
+}
+
+.head p {
+  margin-top: 14px;
+  font-size: 17px;
+  color: var(--ink-2);
+}
+
+/* ============================================================
+   Who we are — one centred floating card.
+   The section used to be a left column with an empty right half;
+   the card fills the width deliberately instead of by accident.
+   ============================================================ */
+
+.band--who {
+  position: relative;
+  overflow: hidden;
+}
+
+.band--who::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(620px 300px at 50% 0%, var(--purple-tint), transparent 70%);
+  pointer-events: none;
+}
+
+.who-card {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 46px 48px 44px;
+  text-align: center;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-lift);
+}
+
+.who-card::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  border-radius: 0 0 4px 4px;
+  background: linear-gradient(90deg, transparent, var(--purple), transparent);
+}
+
+.who-card__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--purple);
+}
+
+/* Bengali and Devanagari have no case and no tracking tradition —
+   the mono/uppercase/letter-spaced treatment shreds them. */
+[data-lang='bn'] .eyebrow,
+[data-lang='hi'] .eyebrow,
+[data-lang='bn'] .who-card__eyebrow,
+[data-lang='hi'] .who-card__eyebrow {
+  font-family: var(--font-ui);
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.who-card__title {
+  margin-top: 16px;
+  font-size: clamp(26px, 3.6vw, 40px);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  max-width: 20ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.who-card__body {
+  margin: 20px auto 0;
+  max-width: 62ch;
+  font-size: 16.5px;
+  color: var(--ink-2);
+}
+
+[data-theme='dark'] .who-card {
+  background: linear-gradient(160deg, var(--surface), var(--surface-2));
+}
+
+/* Pull quote */
+.pullquote {
+  margin-top: 34px;
+  padding: 24px 26px;
+  border-left: 4px solid var(--purple);
+  border-radius: 0 var(--r) var(--r) 0;
+  background: var(--purple-tint);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--purple-900);
+  max-width: 46ch;
+}
+
+[data-theme='dark'] .table-cell[data-state='occupied'] {
+  background: #3a2a12;
+  background: color-mix(in srgb, var(--amber) 22%, transparent);
+}
+
+[data-theme='dark'] .table-cell[data-state='billed'] {
+  background: #2a1946;
+  background: color-mix(in srgb, var(--purple) 26%, transparent);
+}
+
+[data-theme='dark'] .pullquote {
+  color: var(--ink);
+}
+
+/* ============================================================
+   Pillars
+   ============================================================ */
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.pillar {
+  padding: 28px 26px;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pillar:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
+}
+
+.pillar__n {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--purple);
+  margin-bottom: 14px;
+}
+
+.pillar h3 {
+  font-size: 20px;
+}
+
+.pillar__line {
+  margin-top: 9px;
+  font-size: 14.5px;
+  color: var(--ink-2);
+}
+
+.pillar ul {
+  margin-top: 20px;
+  display: grid;
+  gap: 10px;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+
+.pillar li {
+  display: flex;
+  gap: 10px;
+  font-size: 14.5px;
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+
+.pillar li::before {
+  content: '';
+  flex: none;
+  width: 5px;
+  height: 5px;
+  margin-top: 8px;
+  border-radius: 50%;
+  background: var(--purple-300);
+}
+
+/* Checkbox "service picker" — replaces the plain bullet for the
+   pillar item lists, no dot needed once it is a checkbox. */
+.pillar__picks li::before {
+  display: none;
+}
+
+.pick {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.pick input[type='checkbox'] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.pick__box {
+  position: relative;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  border-radius: 5px;
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.pick:hover .pick__box {
+  border-color: var(--purple);
+}
+
+.pick input:focus-visible + .pick__box {
+  outline: 2px solid var(--purple);
+  outline-offset: 2px;
+}
+
+.pick__box::after {
+  content: '✓';
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  line-height: 16px;
+  font-size: 12px;
+  font-weight: 900;
+  color: #fff;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.12s ease, transform 0.12s ease;
+}
+
+.pick input:checked + .pick__box {
+  background: var(--purple);
+  border-color: var(--purple);
+}
+
+.pick input:checked + .pick__box::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.pick__text {
+  font-size: 14.5px;
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+
+.pick--on .pick__text {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Selection summary + CTA under the pillars */
+.pick-bar {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: var(--r-lg);
+  border: 1px dashed var(--line);
+  color: var(--ink-3);
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+.pick-bar--active {
+  border-style: solid;
+  border-color: var(--purple);
+  background: var(--purple-tint);
+  color: var(--purple-900);
+}
+
+/* ============================================================
+   Timeline (How it works)
+   ============================================================ */
+
+.timeline {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 32px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.step__when {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--purple);
+  padding-top: 4px;
+}
+
+.step h3 {
+  font-size: 20px;
+}
+
+.step p {
+  margin-top: 8px;
+  color: var(--ink-2);
+  font-size: 15.5px;
+  max-width: 62ch;
+}
+
+/* ============================================================
+   Compare (why one vendor)
+   ============================================================ */
+
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.compare__card {
+  padding: 30px 28px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.compare__card--good {
+  background: var(--purple);
+  border-color: var(--purple);
+  color: #fff;
+}
+
+.compare__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.compare__card--good .compare__label {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.compare__card h3 {
+  margin-top: 12px;
+  font-size: 22px;
+}
+
+.compare__card p {
+  margin-top: 14px;
+  color: var(--ink-2);
+  font-size: 15.5px;
+}
+
+.compare__card--good p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ============================================================
+   Zen OS block
+   ============================================================ */
+
+.pos-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  margin-bottom: 56px;
+}
+
+.pos-head h2 {
+  font-size: clamp(32px, 5vw, 50px);
+  margin-top: 12px;
+}
+
+.pos-head__sub {
+  margin-top: 14px;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--purple);
+  letter-spacing: -0.015em;
+}
+
+.pos-head__body {
+  margin-top: 16px;
+  color: var(--ink-2);
+  font-size: 16.5px;
+}
+
+/* Signature: the live floor map */
+.floor {
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: var(--shadow-lift);
+  overflow: hidden;
+}
+
+.floor__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-2);
+}
+
+.floor__title {
+  font-size: 13.5px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.floor__live {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.floor__pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
+}
+
+.floor__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 18px;
+}
+
+.table-cell {
+  aspect-ratio: 1 / 0.82;
+  border-radius: var(--r-sm);
+  border: 1.5px solid var(--line);
+  background: var(--surface-2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  transition: background-color 0.45s ease, border-color 0.45s ease, color 0.45s ease;
+}
+
+.table-cell__n {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.table-cell__s {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.table-cell[data-state='free'] {
+  color: var(--ink-3);
+}
+
+.table-cell[data-state='occupied'] {
+  background: #fdf3e4;
+  background: color-mix(in srgb, var(--amber) 16%, transparent);
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.table-cell[data-state='billed'] {
+  background: #efe6f8;
+  background: color-mix(in srgb, var(--purple) 14%, transparent);
+  border-color: var(--purple);
+  color: var(--purple);
+}
+
+.floor__foot {
+  display: flex;
+  gap: 18px;
+  padding: 0 18px 18px;
+  flex-wrap: wrap;
+}
+
+.legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--ink-3);
+  font-weight: 600;
+}
+
+.legend__swatch {
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  border: 1.5px solid var(--line-strong);
+}
+
+.legend__swatch--occupied {
+  background: #f8e3c4;
+  background: color-mix(in srgb, var(--amber) 25%, transparent);
+  border-color: var(--amber);
+}
+
+.legend__swatch--billed {
+  background: #e3d3f2;
+  background: color-mix(in srgb, var(--purple) 22%, transparent);
+  border-color: var(--purple);
+}
+
+/* Capability grid */
+.caps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.cap {
+  padding: 22px 20px;
+  border-radius: var(--r);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.cap h4 {
+  font-size: 15.5px;
+}
+
+.cap p {
+  margin-top: 8px;
+  font-size: 13.5px;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+
+.cap__i {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--purple-300);
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* ============================================================
+   Pricing
+   ============================================================ */
+
+.cycle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.cycle__note {
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--ink-2);
+  margin-bottom: 30px;
+}
+
+.plans {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.plan {
+  position: relative;
+  padding: 30px 26px;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.plan--hero {
+  border: 2px solid var(--purple);
+  box-shadow: var(--shadow-lift);
+}
+
+.plan__flag {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 14px;
+  border-radius: var(--r-pill);
+  background: var(--purple);
+  color: #fff;
+  font-size: 11.5px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.plan__name {
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.plan__tag {
+  margin-top: 5px;
+  font-size: 13.5px;
+  color: var(--ink-2);
+}
+
+.plan__price {
+  margin: 22px 0 4px;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.plan__amt {
+  font-family: var(--font-mono);
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--purple);
+  font-variant-numeric: tabular-nums;
+}
+
+.plan__per {
+  font-size: 14px;
+  color: var(--ink-3);
+  font-weight: 600;
+}
+
+.plan__alt {
+  font-size: 12.5px;
+  color: var(--ink-3);
+  min-height: 19px;
+}
+
+.plan__who {
+  margin-top: 16px;
+  padding: 10px 12px;
+  border-radius: var(--r-sm);
+  background: var(--purple-tint);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--purple-900);
+}
+
+[data-theme='dark'] .plan__who {
+  color: var(--ink);
+}
+
+.plan__limits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.limit {
+  padding: 9px 10px;
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+
+.limit__k {
+  font-size: 10.5px;
+  color: var(--ink-3);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.limit__v {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.plan__list {
+  margin-top: 20px;
+  display: grid;
+  gap: 9px;
+  flex: 1;
+}
+
+.plan__list li {
+  display: flex;
+  gap: 9px;
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+
+.tick {
+  flex: none;
+  margin-top: 3px;
+  color: var(--green);
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.plan__no {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line-strong);
+  display: grid;
+  gap: 7px;
+}
+
+.plan__no-h {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.plan__no li {
+  display: flex;
+  gap: 9px;
+  font-size: 13.5px;
+  color: var(--ink-3);
+}
+
+.cross {
+  flex: none;
+  margin-top: 2px;
+  font-weight: 700;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.plan .btn {
+  margin-top: 22px;
+}
+
+/* Add-ons */
+.addons {
+  margin-top: 46px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.addons h3 {
+  padding: 18px 24px;
+  font-size: 16px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-2);
+}
+
+.addon {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 15px 24px;
+  border-bottom: 1px solid var(--line);
+  font-size: 14.5px;
+}
+
+.addon:last-child {
+  border-bottom: none;
+}
+
+.addon__note {
+  font-size: 12.5px;
+  color: var(--ink-3);
+}
+
+.addon__price {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   Founder
+   ============================================================ */
+
+.founder {
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  gap: 48px;
+  align-items: center;
+  max-width: 980px;
+}
+
+/* Portrait panel. The photo ships as a transparent cut-out, so the
+   neutral backdrop lives here in CSS and follows the theme rather
+   than being baked into the file. */
+.founder__photo {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  background:
+    radial-gradient(120% 90% at 50% 8%, #ffffff, transparent 60%),
+    linear-gradient(168deg, #efecf5, #e4dff0);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-lift);
+}
+
+.founder__photo img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+  display: block;
+}
+
+[data-theme='dark'] .founder__photo {
+  background:
+    radial-gradient(120% 90% at 50% 8%, #362d49, transparent 62%),
+    linear-gradient(168deg, #2b2438, #221c30);
+}
+
+.founder__name {
+  font-size: 26px;
+  margin-top: 6px;
+}
+
+.founder__role {
+  margin-top: 4px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--purple);
+  letter-spacing: 0.04em;
+}
+
+.founder__body {
+  margin-top: 16px;
+  color: var(--ink-2);
+  max-width: 66ch;
+  font-size: 15.5px;
+}
+
+.founder__quote {
+  margin-top: 18px;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+/* ============================================================
+   Lead form
+   ============================================================ */
+
+.lead {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 52px;
+  align-items: start;
+}
+
+/* ============================================================
+   Form controls
+   Taller targets, a real label hierarchy, one clear focus ring and a
+   drawn select chevron — the browser default arrow was the single
+   most obviously unstyled thing on the page.
+   ============================================================ */
+
+.field {
+  display: grid;
+  gap: 7px;
+  margin-bottom: 18px;
+}
+
+.field label {
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--ink-2);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 14px 15px;
+  border-radius: var(--r-sm);
+  border: 1.5px solid var(--line);
+  background: var(--surface-2);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.4;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--ink-3);
+}
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+  border-color: var(--line-strong);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  background: var(--surface);
+  border-color: var(--purple);
+  box-shadow: 0 0 0 4px rgba(95, 37, 159, 0.14);
+}
+
+/* Native arrow off, our own chevron on — keeps the control consistent
+   across Chrome, Safari and Firefox. */
+.field select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 42px;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 21px) calc(50% + 1px), calc(100% - 15px) calc(50% + 1px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.field textarea {
+  min-height: 112px;
+  resize: vertical;
+}
+
+.field__err {
+  font-size: 12.5px;
+  color: var(--red);
+  font-weight: 600;
+}
+
+.field--bad input,
+.field--bad select,
+.field--bad textarea {
+  border-color: var(--red);
+  background: color-mix(in srgb, var(--red) 6%, var(--surface));
+}
+
+.field--bad input:focus,
+.field--bad select:focus,
+.field--bad textarea:focus {
+  box-shadow: 0 0 0 4px rgba(207, 61, 61, 0.16);
+}
+
+.row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* Header inside the form card */
+.form-head {
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.form-head h3 {
+  font-size: 20px;
+  letter-spacing: -0.02em;
+}
+
+.form-head p {
+  margin-top: 7px;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.form-foot {
+  margin-top: 14px;
+  font-size: 12.5px;
+  color: var(--ink-3);
+  text-align: center;
+}
+
+.form-card {
+  padding: 32px 30px;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-lift);
+}
+
+.form-done {
+  padding: 40px 28px;
+  text-align: center;
+  border-radius: var(--r-lg);
+  background: var(--purple-tint);
+  border: 1px solid var(--purple-300);
+}
+
+/* Services carried over from the checkbox picker, shown so the
+   visitor can see what they are about to ask us about. */
+.lead-picks {
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  border-radius: var(--r-sm);
+  background: var(--purple-tint);
+  border: 1px solid var(--purple-300);
+}
+
+.lead-picks__label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--purple-900);
+  margin-bottom: 8px;
+}
+
+.lead-picks__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.lead-picks__chip {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  border: 1px solid var(--purple-300);
+  color: var(--ink-2);
+}
+
+.form-done__mark {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+/* ============================================================
+   Contact
+   ============================================================ */
+
+/* auto-fit rather than a fixed 3-up: the email address is long and a
+   rigid third of the column snapped it mid-word. */
+.contact-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 18px;
+  border-radius: var(--r);
+  border: 1.5px solid var(--line-strong);
+  background: var(--surface);
+  transition: all 0.15s ease;
+}
+
+.contact-card:hover {
+  border-color: var(--purple);
+  transform: translateY(-2px);
+}
+
+.contact-card__k {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--purple);
+}
+
+.contact-card__v {
+  font-size: 14px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 22px 20px;
+  margin-top: 34px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.detail__k {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.detail__v {
+  overflow-wrap: anywhere;
+  margin-top: 5px;
+  font-size: 14.5px;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+/* ============================================================
+   Footer
+   ------------------------------------------------------------
+   Always dark, in both themes. It is the one band on the page
+   that reads as a base rather than as content, and holding it
+   dark gives the page a floor to stand on.
+   ============================================================ */
+
+.footer {
+  padding: 72px 0 26px;
+  background: #14111c;
+  color: #cfc8de;
+}
+
+[data-theme='dark'] .footer {
+  background: #0f0d16;
+  border-top: 1px solid var(--line);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1.3fr;
+  gap: 48px;
+  padding-bottom: 44px;
+}
+
+.footer__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.footer__mark {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  border-radius: 11px;
+  background: #fff;
+  color: var(--purple);
+  flex: none;
+}
+
+.footer__mark .logo-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.footer__name {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 400;
+  letter-spacing: -0.022em;
+  color: #fff;
+  -webkit-text-stroke: 0.34px currentColor;
+}
+
+.footer__blurb {
+  margin-top: 20px;
+  max-width: 42ch;
+  font-size: 14.5px;
+  line-height: 1.62;
+  color: #a9a1bd;
+}
+
+.footer__brand .btn--wa {
+  margin-top: 24px;
+}
+
+.footer__h {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #7d7595;
+  margin-bottom: 18px;
+}
+
+[data-lang='bn'] .footer__h,
+[data-lang='hi'] .footer__h {
+  font-family: var(--font-ui);
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.footer__links {
+  display: grid;
+  gap: 11px;
+}
+
+.footer__links a {
+  font-size: 15px;
+  color: #ded8ea;
+  transition: color 0.15s ease;
+}
+
+.footer__links a:hover {
+  color: #fff;
+}
+
+.footer__where {
+  max-width: 34ch;
+  font-size: 14.5px;
+  line-height: 1.62;
+  color: #a9a1bd;
+}
+
+.footer__where + .footer__where {
+  margin-top: 12px;
+}
+
+.footer__where a {
+  color: #ded8ea;
+}
+
+.footer__where a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.footer__social a {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.07);
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.footer__social a:hover {
+  color: var(--purple-300);
+  background: rgba(255, 255, 255, 0.14);
+  transform: translateY(-2px);
+}
+
+.footer__social a:focus-visible {
+  outline: 2px solid var(--purple-300);
+  outline-offset: 2px;
+}
+
+.footer__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  font-size: 13px;
+  color: #7d7595;
+}
+
+.footer__bar-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.footer__credit {
+  font-size: 11.5px;
+  color: #6d6683;
+  opacity: 0.85;
+}
+
+.footer__credit:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* ============================================================
+   Feature banners (what is inside)
+   ============================================================ */
+
+.banners {
+  position: relative;
+}
+
+.banner {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 30px;
+  min-height: 172px;
+  padding: 36px 38px;
+  border-radius: var(--r-lg);
+  background:
+    radial-gradient(720px 200px at 12% 0%, var(--purple-tint), transparent 70%),
+    var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-lift);
+  animation: bannerPop 0.52s cubic-bezier(0.2, 1.3, 0.35, 1) both;
+}
+
+/* Pop rather than slide: at banner size a scale-and-lift reads as a
+   new item far faster than horizontal travel. */
+@keyframes bannerPop {
+  from { opacity: 0; transform: scale(0.955) translateY(14px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.banner__n {
+  font-family: var(--font-mono);
+  font-size: clamp(44px, 6vw, 68px);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--purple);
+  opacity: 0.26;
+}
+
+.banner__name {
+  font-size: clamp(24px, 3.4vw, 34px);
+  letter-spacing: -0.02em;
+}
+
+.banner__blurb {
+  margin-top: 12px;
+  max-width: 56ch;
+  font-size: 16.5px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.banner__count {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+/* Progress hairline — shows the slide is on a timer, and stops moving
+   the moment the timer is paused. */
+.banner__timer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--purple), var(--purple-300));
+}
+
+.banner__timer[data-run='true'] {
+  animation: bannerTimer 4.2s linear both;
+}
+
+.banner__timer[data-run='false'] {
+  transform: scaleX(0);
+}
+
+@keyframes bannerTimer {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+[data-theme='dark'] .banner {
+  background:
+    radial-gradient(720px 200px at 12% 0%, rgba(155, 111, 208, 0.14), transparent 70%),
+    linear-gradient(160deg, var(--surface), var(--surface-2));
+}
+
+[data-theme='dark'] .banner__n {
+  color: var(--purple-300);
+  opacity: 0.34;
+}
+
+.banners__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.banners__nav > button {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line-strong);
+  color: var(--ink-2);
+  font-size: 15px;
+  transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.banners__nav > button:hover {
+  border-color: var(--purple);
+  color: var(--purple);
+  transform: translateY(-1px);
+}
+
+.banners__dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.banners__dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--line-strong);
+  transition: background 0.2s ease, width 0.25s ease;
+}
+
+.banners__dot.is-on {
+  width: 26px;
+  border-radius: var(--r-pill);
+  background: var(--purple);
+}
+
+[data-theme='dark'] .banners__dot.is-on {
+  background: var(--purple-300);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner { animation: none; }
+  .banner__timer { animation: none; transform: scaleX(1); }
+}
+
+/* ============================================================
+   Modal (auth)
+   ============================================================ */
+
+.modal-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(11, 10, 16, 0.55);
+  backdrop-filter: blur(4px);
+  animation: fade 0.18s ease;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.modal {
+  width: 100%;
+  max-width: 420px;
+  padding: 30px 28px;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-lift);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.modal h2 {
+  font-size: 21px;
+}
+
+.modal__sub {
+  font-size: 14px;
+  color: var(--ink-2);
+  margin-bottom: 22px;
+}
+
+.modal__toggle {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--purple);
+}
+
+.modal__demo {
+  margin-top: 16px;
+  padding: 10px 12px;
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  font-size: 12px;
+  color: var(--ink-3);
+  text-align: center;
+}
+
+/* ============================================================
+   Portal
+   ============================================================ */
+
+.portal {
+  min-height: 100vh;
+  background: var(--bg-alt);
+}
+
+.portal__head {
+  padding: 44px 0 30px;
+}
+
+.portal__head h1 {
+  font-size: clamp(26px, 4vw, 36px);
+}
+
+.portal__head p {
+  margin-top: 8px;
+  color: var(--ink-2);
+}
+
+.portal__grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 20px;
+  padding-bottom: 60px;
+  align-items: start;
+}
+
+.card {
+  padding: 24px;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+
+.card__h {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.card__h h2 {
+  font-size: 17px;
+}
+
+.pill {
+  padding: 4px 11px;
+  border-radius: var(--r-pill);
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.pill--ok {
+  background: #e2f5ee;
+  background: color-mix(in srgb, var(--green) 15%, transparent);
+  color: var(--green);
+}
+
+.pill--warn {
+  background: #fdf3e4;
+  background: color-mix(in srgb, var(--amber) 16%, transparent);
+  color: var(--amber);
+}
+
+.kv {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.kv__k {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.kv__v {
+  margin-top: 4px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.kv__v--mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.meter {
+  margin-top: 18px;
+  height: 7px;
+  border-radius: var(--r-pill);
+  background: var(--surface-2);
+  overflow: hidden;
+}
+
+.meter__fill {
+  height: 100%;
+  border-radius: var(--r-pill);
+  background: var(--purple);
+}
+
+.opted {
+  display: grid;
+  gap: 10px;
+}
+
+.opted__row {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 11px 14px;
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+.opted__row .tick {
+  margin-top: 0;
+}
+
+.pos-launch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 24px;
+  border-radius: var(--r-lg);
+  background: var(--purple);
+  color: #fff;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(95, 37, 159, 0.3);
+}
+
+.pos-launch h2 {
+  font-size: 19px;
+}
+
+.pos-launch p {
+  margin-top: 4px;
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.table-lite {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table-lite th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding: 0 10px 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.table-lite td {
+  padding: 12px 10px 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.table-lite tr:last-child td {
+  border-bottom: none;
+}
+
+.quick {
+  display: grid;
+  gap: 8px;
+}
+
+.quick a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+
+.quick a:hover {
+  border-color: var(--purple);
+  color: var(--purple);
+}
+
+.empty {
+  padding: 26px;
+  text-align: center;
+  color: var(--ink-3);
+  font-size: 14px;
+}
+
+/* ============================================================
+   Scroll reveal — one-shot fade/rise, driven by useScrollReveal.
+   Elements start hidden only once JS confirms it's watching, so
+   there's no flash-of-invisible-content if JS is slow or absent.
+   ============================================================ */
+
+.js-reveal .head,
+.js-reveal .pillar,
+.js-reveal .cap,
+.js-reveal .plan,
+.js-reveal .compare__card,
+.js-reveal .founder,
+.js-reveal .step,
+.js-reveal .pullquote,
+.js-reveal .addon {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js-reveal .in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pillars .pillar:nth-child(2) { transition-delay: 0.06s; }
+.pillars .pillar:nth-child(3) { transition-delay: 0.12s; }
+.compare .compare__card:nth-child(2) { transition-delay: 0.08s; }
+.plans .plan:nth-child(2) { transition-delay: 0.07s; }
+.plans .plan:nth-child(3) { transition-delay: 0.14s; }
+.timeline .step:nth-child(2) { transition-delay: 0.06s; }
+.timeline .step:nth-child(3) { transition-delay: 0.12s; }
+.timeline .step:nth-child(4) { transition-delay: 0.18s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal .head,
+  .js-reveal .pillar,
+  .js-reveal .cap,
+  .js-reveal .plan,
+  .js-reveal .compare__card,
+  .js-reveal .founder,
+  .js-reveal .step,
+  .js-reveal .pullquote,
+  .js-reveal .addon {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ============================================================
+   Glass cards — used on the capability carousel. Subtle, purple-
+   tinted, not the cold black/teal glass of an enterprise dashboard.
+   ============================================================ */
+
+.cap {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.35));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.cap:hover {
+  transform: translateY(-5px);
+  border-color: var(--purple-300);
+  box-shadow: var(--shadow-lift);
+}
+[data-theme='dark'] .cap {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+}
+
+.plan {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, opacity 0.35s ease;
+}
+.plan:hover {
+  transform: translateY(-4px);
+}
+
+/* ============================================================
+   Capability carousel — horizontal, scroll-snap, swipeable. Same
+   content the grid used to show, just built the way a feature
+   carousel is built on the sites this was modeled on.
+   ============================================================ */
+
+.caps-carousel {
+  position: relative;
+  margin: 0 calc(var(--pad) * -1);
+  padding: 4px var(--pad) 20px;
+}
+
+.caps {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: var(--pad);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.caps::-webkit-scrollbar {
+  display: none;
+}
+
+.cap {
+  flex: 0 0 240px;
+  scroll-snap-align: start;
+}
+
+.caps-nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.caps-nav button {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.caps-nav button:hover {
+  background: var(--purple);
+  border-color: var(--purple);
+  color: #fff;
+}
+.caps-nav button:disabled {
+  opacity: 0.35;
+  cursor: default;
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+
+/* ============================================================
+   "What's your business?" categorization chips — ZeBeyond-style
+   filter, reskinned; drives which plan card is highlighted below.
+   ============================================================ */
+
+.biz-filter {
+  margin-bottom: 28px;
+}
+
+.biz-filter__label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-2);
+  margin-bottom: 12px;
+}
+
+.biz-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.biz-chip {
+  padding: 9px 16px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--ink-2);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.biz-chip:hover {
+  border-color: var(--purple-300);
+  color: var(--purple);
+}
+
+.biz-chip[aria-pressed='true'] {
+  background: var(--purple);
+  border-color: var(--purple);
+  color: #fff;
+}
+
+.plan--dim {
+  opacity: 0.45;
+  transform: scale(0.98);
+}
+
+.plan--match {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px var(--purple-tint), var(--shadow-lift);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 980px) {
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 32px;
+  }
+  .footer__brand {
+    grid-column: 1 / -1;
+  }
+  .banner {
+    grid-template-columns: auto 1fr;
+    gap: 22px;
+    padding: 30px 28px;
+  }
+  .banner__count {
+    grid-column: 2;
+    margin-top: 4px;
+  }
+}
+
+@media (max-width: 980px) {
+  .band {
+    padding: 64px 0;
+  }
+  .hero__grid,
+  .pos-head,
+  .lead,
+  .portal__grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  /* Radii have to leave room for half a chip on each side, or the widest
+     label clips against the viewport edge. */
+  .orbit {
+    width: 310px;
+    height: 310px;
+    margin: 0 auto;
+    --orbit-in: 62px;
+    --orbit-mid: 100px;
+    --orbit-out: 136px;
+    --mark: 68px;
+  }
+  .orbit__chip {
+    padding: 7px 13px 7px 8px;
+    gap: 7px;
+  }
+  .orbit__glyph {
+    width: 23px;
+    height: 23px;
+  }
+  .orbit__glyph svg {
+    width: 14px;
+    height: 14px;
+  }
+  .orbit__label {
+    font-size: 11.5px;
+  }
+  .topbar__loc {
+    display: none;
+  }
+  .pillars,
+  .plans,
+  .compare,
+  .contact-actions {
+    grid-template-columns: 1fr;
+  }
+  .caps {
+    grid-template-columns: 1fr 1fr;
+  }
+  .details {
+    grid-template-columns: 1fr 1fr;
+  }
+  .step {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .kv {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  :root {
+    --pad: 18px;
+  }
+  .footer {
+    padding: 52px 0 22px;
+  }
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    padding-bottom: 32px;
+  }
+  .banner {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 26px 22px;
+    min-height: 0;
+  }
+  .banner__n {
+    font-size: 34px;
+  }
+  .banners__nav {
+    gap: 12px;
+  }
+  .band {
+    padding: 52px 0;
+  }
+  .hero {
+    padding: 48px 0 60px;
+  }
+  .topbar__inner {
+    height: 60px;
+  }
+  .logo {
+    font-size: 15.5px;
+    white-space: nowrap;
+    flex: none;
+  }
+  .logo__mark,
+  .logo__img {
+    width: 28px;
+    height: 28px;
+    font-size: 17px;
+  }
+  .topbar__tools {
+    gap: 6px;
+  }
+  /* Below this width the wordmark, three language chips, theme toggle
+     and Sign in cannot all fit honestly — the mark carries the brand
+     and the full name still appears in the hero copy and footer. */
+  .logo span:last-child {
+    display: none;
+  }
+  .caps,
+  .details,
+  .plan__limits {
+    grid-template-columns: 1fr 1fr;
+  }
+  .floor__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .founder {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .founder__av {
+    width: 88px;
+    height: 88px;
+    font-size: 32px;
+  }
+  .row-2 {
+    grid-template-columns: 1fr;
+  }
+  .pos-launch {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .segmented button {
+    padding: 6px 9px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  /* Small phones: the widest chip ("Zen Connect") needs the radius
+     pulled in again or it runs off the edge. */
+  .orbit {
+    width: 290px;
+    height: 290px;
+    --orbit-in: 54px;
+    --orbit-mid: 88px;
+    --orbit-out: 120px;
+    --mark: 60px;
+  }
+  .orbit__chip {
+    padding: 6px 11px 6px 7px;
+    gap: 6px;
+  }
+  .orbit__glyph {
+    width: 20px;
+    height: 20px;
+  }
+  .orbit__glyph svg {
+    width: 12px;
+    height: 12px;
+  }
+  .orbit__label {
+    font-size: 10.5px;
+  }
+}
+
+@media (max-width: 340px) {
+  /* Last stop — iPhone SE class. Below this the ring cannot hold a
+     readable label, so it shrinks rather than spilling off-screen. */
+  .orbit {
+    width: 264px;
+    height: 264px;
+    --orbit-in: 46px;
+    --orbit-mid: 76px;
+    --orbit-out: 104px;
+    --mark: 52px;
+  }
+  .orbit__label { font-size: 10px; }
+}
+
+/* ============================================================
+   Our work — case studies
+   ============================================================ */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 380px));
+  gap: 20px;
+}
+
+.work-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: left;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  font: inherit;
+  color: inherit;
+}
+
+.work-card:hover {
+  box-shadow: var(--shadow-lift);
+  border-color: var(--purple-300);
+  transform: translateY(-2px);
+}
+
+.work-card__cover {
+  display: block;
+  aspect-ratio: 16 / 10;
+  background: var(--surface-2);
+}
+
+.work-card__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.work-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px 22px 22px;
+}
+
+.work-card__client {
+  font-weight: 700;
+  font-size: 16.5px;
+}
+
+.work-card__tagline {
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+
+.work-card__cta {
+  margin-top: 10px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--purple);
+}
+
+/* ---- case detail modal ---- */
+.case-modal {
+  width: 100%;
+  max-width: 720px;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 30px 28px;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-lift);
+}
+
+.case-modal__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 6px;
+}
+
+.case-modal__eyebrow--tight {
+  margin-bottom: 12px;
+}
+
+.case-modal__gallery {
+  margin-top: 22px;
+}
+
+.case-modal__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.case-modal__grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+}
+
+.case-modal__block {
+  margin-top: 26px;
+  padding: 20px 22px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+}
+
+.case-modal__block h3 {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.case-modal__block p {
+  font-size: 14.5px;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+.case-modal__block--good {
+  border-color: var(--purple-300);
+  background: var(--purple-tint);
+}
+
+@media (max-width: 640px) {
+  .case-modal {
+    padding: 24px 20px;
+    max-height: 92vh;
+  }
+  .case-modal__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,58 @@
+### Charubala API — open in VS Code with the "REST Client" extension
+### and click "Send Request" above any block.
+
+@host = http://localhost:5000
+
+### health
+GET {{host}}/api/health
+
+### register a new customer
+POST {{host}}/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "owner@example.com",
+  "password": "secret123",
+  "businessName": "Sample Restaurant"
+}
+
+### sign in as the seeded demo customer
+# @name login
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "demo@charubala.com",
+  "password": "demo1234"
+}
+
+### the portal payload (uses the token from the login above)
+GET {{host}}/api/account
+Authorization: Bearer {{login.response.body.token}}
+
+### submit a website enquiry (public)
+POST {{host}}/api/leads
+Content-Type: application/json
+
+{
+  "name": "Ravi Das",
+  "business": "Das Sweets",
+  "type": "Restaurant / cafe",
+  "phone": "9876543210",
+  "message": "Need billing software and a menu site.",
+  "selectedServices": ["Charu OS", "Menu microsite"]
+}
+
+### sign in as admin
+# @name adminLogin
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@charubala.com",
+  "password": "admin1234"
+}
+
+### list every lead (admin only)
+GET {{host}}/api/leads
+Authorization: Bearer {{adminLogin.response.body.token}}

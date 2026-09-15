@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.env
+*.log
+.DS_Store
+sohoj-website-codebase_1.zip
