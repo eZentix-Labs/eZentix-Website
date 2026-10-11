@@ -138,7 +138,7 @@ function FeatureBanners() {
       <div className="banner" key={active.id} aria-live="polite">
         <div className="banner__n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</div>
         <div className="banner__text">
-          <h3 className="banner__name">{active.name}</h3>
+          <h4 className="banner__name">{active.name}</h4>
           <p className="banner__blurb">{active.blurb}</p>
         </div>
         <div className="banner__count" aria-hidden="true">
@@ -262,13 +262,13 @@ export default function ZenOS({ onChoosePlan }) {
 
         {/* What is inside — one banner at a time, auto-advancing */}
         <div className="head" style={{ marginTop: '56px' }}>
-          <h2 style={{ fontSize: '26px' }}>{t.pos.featuresTitle}</h2>
+          <h3 style={{ fontSize: '26px' }}>{t.pos.featuresTitle}</h3>
         </div>
         <FeatureBanners />
 
         {/* Pricing */}
         <div className="head" style={{ marginTop: '64px', marginBottom: '20px' }}>
-          <h2 style={{ fontSize: '26px' }}>{t.pos.pricingTitle}</h2>
+          <h3 style={{ fontSize: '26px' }}>{t.pos.pricingTitle}</h3>
         </div>
 
         <div className="biz-filter">

@@ -17,6 +17,7 @@ export const content = {
     location: 'Budbud, West Bengal',
 
     nav: {
+      sections: 'Sections',
       signIn: 'Sign in',
       signUp: 'Get started',
       portal: 'My account',
@@ -166,6 +167,7 @@ export const content = {
       case: 'Case study',
       problemLabel: 'The problem',
       solutionLabel: 'What we built',
+      coverAlt: 'Case study cover',
       galleryLabel: 'What we built — in pictures',
       close: 'Close',
       items: [
@@ -205,7 +207,7 @@ export const content = {
       privacy: 'We use your details only to get back to you. No lists, no spam.',
       optional: 'optional',
       done: 'Got it. We will call you within two working days.',
-      error: 'That did not send. Call us on +91 73187 49498 instead.',
+      error: 'That did not send. Call us on +91 84362 99320 instead.',
       required: 'Fill this in',
       badPhone: 'Enter a 10-digit number',
     },
@@ -281,13 +283,10 @@ export const content = {
         { label: 'Client Work', href: '#work' },
         { label: 'Contact', href: '#talk' },
       ],
-      social: [
-        { label: 'YouTube', href: 'https://youtube.com' },
-        { label: 'Instagram', href: 'https://instagram.com' },
-        { label: 'Facebook', href: 'https://facebook.com' },
-        { label: 'Reddit', href: 'https://reddit.com' },
-        { label: 'LinkedIn', href: 'https://linkedin.com' },
-      ],
+      /* TODO: replace with the real profile URLs, then mirror them into the
+         sameAs array in index.html so Google links the site to the accounts.
+         Left empty on purpose — bare platform homepages are not profiles. */
+      social: [],
       rights: '© 2026 eZentix Labs. All rights reserved.',
       note: '',
       webfont: 'Bengali display type — Lipighor',
@@ -302,6 +301,7 @@ export const content = {
     location: 'বুদবুদ, পশ্চিমবঙ্গ',
 
     nav: {
+      sections: 'বিভাগ',
       signIn: 'সাইন ইন',
       signUp: 'শুরু করুন',
       portal: 'আমার অ্যাকাউন্ট',
@@ -451,6 +451,7 @@ export const content = {
       case: 'কেস স্টাডি',
       problemLabel: 'সমস্যাটা কী ছিল',
       solutionLabel: 'আমরা কী বানালাম',
+      coverAlt: 'কেস স্টাডির কভার',
       galleryLabel: 'যা বানিয়েছি — ছবিতে',
       close: 'বন্ধ করুন',
       items: [
@@ -566,13 +567,10 @@ export const content = {
         { label: 'ক্লায়েন্ট ওয়ার্ক', href: '#work' },
         { label: 'যোগাযোগ', href: '#talk' },
       ],
-      social: [
-        { label: 'YouTube', href: 'https://youtube.com' },
-        { label: 'Instagram', href: 'https://instagram.com' },
-        { label: 'Facebook', href: 'https://facebook.com' },
-        { label: 'Reddit', href: 'https://reddit.com' },
-        { label: 'LinkedIn', href: 'https://linkedin.com' },
-      ],
+      /* TODO: replace with the real profile URLs, then mirror them into the
+         sameAs array in index.html so Google links the site to the accounts.
+         Left empty on purpose — bare platform homepages are not profiles. */
+      social: [],
       note: '',
       rights: '© ২০২৬ eZentix Labs। সর্বস্বত্ব সংরক্ষিত।',
       webfont: 'বাংলা ফন্ট — লিপিঘর',
@@ -587,6 +585,7 @@ export const content = {
     location: 'बुदबुद, पश्चिम बंगाल',
 
     nav: {
+      sections: 'अनुभाग',
       signIn: 'साइन इन',
       signUp: 'शुरू करें',
       portal: 'मेरा खाता',
@@ -736,6 +735,7 @@ export const content = {
       case: 'केस स्टडी',
       problemLabel: 'समस्या क्या थी',
       solutionLabel: 'हमने क्या बनाया',
+      coverAlt: 'केस स्टडी कवर',
       galleryLabel: 'जो बनाया — तस्वीरों में',
       close: 'बंद करें',
       items: [
@@ -775,7 +775,7 @@ export const content = {
       privacy: 'आपकी जानकारी सिर्फ आपसे संपर्क करने के लिए इस्तेमाल होती है। कोई लिस्ट नहीं, कोई स्पैम नहीं।',
       optional: 'वैकल्पिक',
       done: 'मिल गया। दो कामकाजी दिनों में फोन करेंगे।',
-      error: 'यह नहीं गया। इसके बजाय +91 73187 49498 पर फोन करें।',
+      error: 'यह नहीं गया। इसके बजाय +91 84362 99320 पर फोन करें।',
       required: 'यह भरें',
       badPhone: '१० अंकों का नंबर डालें',
     },
@@ -851,13 +851,10 @@ export const content = {
         { label: 'क्लाइंट वर्क', href: '#work' },
         { label: 'संपर्क', href: '#talk' },
       ],
-      social: [
-        { label: 'YouTube', href: 'https://youtube.com' },
-        { label: 'Instagram', href: 'https://instagram.com' },
-        { label: 'Facebook', href: 'https://facebook.com' },
-        { label: 'Reddit', href: 'https://reddit.com' },
-        { label: 'LinkedIn', href: 'https://linkedin.com' },
-      ],
+      /* TODO: replace with the real profile URLs, then mirror them into the
+         sameAs array in index.html so Google links the site to the accounts.
+         Left empty on purpose — bare platform homepages are not profiles. */
+      social: [],
       note: '',
       rights: '© २०२६ eZentix Labs। सर्वाधिकार सुरक्षित।',
       webfont: 'Bengali display type — Lipighor',
@@ -867,9 +864,9 @@ export const content = {
 }
 
 export const CONTACT = {
-  phone: '+917318749498',
-  phoneDisplay: '+91 73187 49498',
-  whatsapp: '917318749498',
+  phone: '+918436299320',
+  phoneDisplay: '+91 84362 99320',
+  whatsapp: '918436299320',
   admin: 'admin@ezentixlabs.com',
   support: 'support@ezentixlabs.com',
   posUrl: 'https://pos.charubalainc.com',

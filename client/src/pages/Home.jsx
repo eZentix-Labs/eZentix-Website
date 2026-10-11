@@ -3,6 +3,7 @@ import { WhoWeAre, WhatWeDo, HowItWorks, WhyEzentixLabs } from '../components/Se
 import Work from '../components/Work'
 import ZenOS from '../components/ZenOS'
 import Contact, { Footer } from '../components/Contact'
+import Seo from '../components/Seo'
 
 /*
  * Section order is fixed by the brief:
@@ -12,6 +13,10 @@ import Contact, { Footer } from '../components/Contact'
 export default function Home({ onChoosePlan }) {
   return (
     <>
+      <Seo
+        title="eZentix Labs — Bring Your Offline Business Online | Zen OS"
+        description="eZentix Labs helps shops, restaurants and clinics in West Bengal move online. Zen OS billing, a real online presence, and hands-on business guidance in one subscription."
+      />
       <Hero />
       <WhoWeAre />
       <WhatWeDo />

@@ -129,7 +129,7 @@ export default function Portal() {
             {account.addOns?.length > 0 && (
               <>
                 <div className="card__h" style={{ marginTop: 22, marginBottom: 12 }}>
-                  <h2 style={{ fontSize: '14px' }}>{t.portal.addOnsHeld}</h2>
+                  <h3 style={{ fontSize: '14px' }}>{t.portal.addOnsHeld}</h3>
                 </div>
                 <div className="opted">
                   {account.addOns.map((a) => (
@@ -175,10 +175,16 @@ export default function Portal() {
                         </span>
                       </td>
                       <td style={{ textAlign: 'right' }}>
-                        {/* TODO(dev): point at your invoice PDF endpoint */}
-                        <a href="#" style={{ color: 'var(--purple)', fontWeight: 700, fontSize: '13px' }}>
+                        {/* TODO(dev): swap for <a href={`/api/account/invoices/${inv.no}.pdf`} download>
+                            once that endpoint exists. Until then this is a disabled control rather
+                            than an href="#", which is a dead link to a crawler and a no-op to a user. */}
+                        <button
+                          type="button"
+                          disabled
+                          style={{ color: 'var(--ink-3)', fontWeight: 700, fontSize: '13px', background: 'none', border: 0, cursor: 'not-allowed' }}
+                        >
                           {t.portal.download}
-                        </a>
+                        </button>
                       </td>
                     </tr>
                   ))}

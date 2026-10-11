@@ -36,7 +36,20 @@ export default function Work() {
               onClick={() => setOpenId(item.id)}
             >
               <span className="work-card__cover">
-                <img src={item.cover} alt={item.client} loading="lazy" />
+                {/* WebP first, JPEG for anything that cannot take it. The
+                    intrinsic size is declared so the card reserves its space
+                    before the file lands — this is the CLS fix, not decoration. */}
+                <picture>
+                  <source srcSet={item.cover.replace(/\.jpe?g$/i, '.webp')} type="image/webp" />
+                  <img
+                    src={item.cover}
+                    alt={`${t.work.coverAlt} — ${item.client}`}
+                    width="1600"
+                    height="900"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
               </span>
               <span className="work-card__body">
                 <span className="work-card__client">{item.client}</span>
@@ -92,8 +105,14 @@ function CaseModal({ item, t, onClose }) {
         <div className="case-modal__gallery">
           <div className="case-modal__eyebrow case-modal__eyebrow--tight">{t.work.galleryLabel}</div>
           <div className="case-modal__grid">
-            {item.gallery.map((src) => (
-              <img key={src} src={src} alt={item.client} loading="lazy" />
+            {item.gallery.map((src, i) => (
+              <img
+                key={src}
+                src={src}
+                alt={`${item.client} — ${t.work.galleryLabel} (${i + 1}/${item.gallery.length})`}
+                loading="lazy"
+                decoding="async"
+              />
             ))}
           </div>
         </div>

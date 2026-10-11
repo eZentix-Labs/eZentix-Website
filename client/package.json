@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prebuild": "node tools/gen-sitemap.mjs",
+    "seo": "node tools/gen-sitemap.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

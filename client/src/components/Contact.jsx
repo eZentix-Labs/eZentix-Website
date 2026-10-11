@@ -183,7 +183,7 @@ export function Footer() {
               {' · '}
               <a href={`mailto:${CONTACT.admin}`}>{CONTACT.admin}</a>
             </p>
-            <div className="footer__social">
+            <div className="footer__social" hidden={t.footer.social.length === 0}>
               {t.footer.social.map((s) => {
                 const Icon = SOCIAL_ICONS[s.label.toLowerCase().replace(/\s/g, '')]
                 return (

@@ -149,7 +149,14 @@ export function Founder() {
           {/* Cut-out portrait on a neutral panel — the backdrop is CSS, not
               baked into the file, so it follows the light/dark theme. */}
           <figure className="founder__photo">
-            <img src="/founder.webp" alt={t.founder.name} width="560" height="700" loading="lazy" />
+            <img
+              src="/founder.webp"
+              alt={`${t.founder.name}, ${t.founder.role} at ${t.brand}`}
+              width="560"
+              height="700"
+              loading="lazy"
+              decoding="async"
+            />
           </figure>
           <div>
             <div className="eyebrow">{t.founder.label}</div>

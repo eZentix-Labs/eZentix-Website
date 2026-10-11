@@ -2,24 +2,150 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>eZentix Labs — powered by AI, guided by technical experts</title>
-  <meta name="description" content="eZentix Labs brings offline businesses online. Zen OS, online presence, and business guidance in one subscription. Budbud, West Bengal." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- Crawlers read this file without running JavaScript, so the home page's
+       full SEO head lives here statically. Seo.jsx only rewrites it when the
+       router moves to a different route (e.g. /account -> noindex). -->
+  <title>eZentix Labs — Bring Your Offline Business Online | Zen OS</title>
+  <meta name="description" content="eZentix Labs helps shops, restaurants and clinics in West Bengal move online. Zen OS billing, a real online presence, and hands-on business guidance in one subscription." />
+  <link rel="canonical" href="https://ezentixlabs.com/" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
   <meta name="theme-color" content="#5F259F" />
   <link rel="icon" type="image/svg+xml" href="/logo.svg" />
   <link rel="apple-touch-icon" href="/logo.svg" />
 
-  <meta property="og:title" content="eZentix Labs — powered by AI, guided by technical experts" />
-  <meta property="og:description" content="We sort the chaos of your offline business and transition you seamlessly online." />
+  <meta property="og:site_name" content="eZentix Labs" />
+  <meta property="og:title" content="eZentix Labs — Bring Your Offline Business Online" />
+  <meta property="og:description" content="We sort the chaos of your offline business and transition you seamlessly online — Zen OS billing, online presence, and guidance in one subscription." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://charubalainc.com" />
+  <meta property="og:url" content="https://ezentixlabs.com/" />
+  <meta property="og:locale" content="en_IN" />
+  <meta property="og:locale:alternate" content="bn_IN" />
+  <meta property="og:locale:alternate" content="hi_IN" />
+  <meta property="og:image" content="https://ezentixlabs.com/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="eZentix Labs — powered by AI, guided by technical experts" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="eZentix Labs — Bring Your Offline Business Online" />
+  <meta name="twitter:description" content="Zen OS billing, online presence, and business guidance in one subscription. Budbud, West Bengal." />
+  <meta name="twitter:image" content="https://ezentixlabs.com/og-image.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="/logo.svg" />
+  <!-- The font CSS is fetched without blocking first paint, then promoted to a
+       real stylesheet once it lands. The families already carry display=swap,
+       so text is painted in the fallback immediately either way; this just stops
+       the round trip from holding up render. <noscript> keeps it working with
+       JavaScript disabled. -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" media="print" onload="this.media='all';this.onload=null" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" /></noscript>
+
+  <!-- Structured data. @id values are stable URIs so the three nodes link to
+       each other instead of being read as three unrelated entities.
+       NOTE: streetAddress / postalCode are deliberately absent — fill them in
+       and they will also need to match the Google Business Profile exactly. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://ezentixlabs.com/#organization",
+        "name": "eZentix Labs",
+        "url": "https://ezentixlabs.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ezentixlabs.com/logo.svg"
+        },
+        "image": "https://ezentixlabs.com/og-image.jpg",
+        "description": "eZentix Labs brings offline businesses online with Zen OS, online presence, and business guidance in one subscription.",
+        "email": "admin@ezentixlabs.com",
+        "telephone": "+91-84362-99320",
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": "West Bengal, India"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Budbud",
+          "addressRegion": "West Bengal",
+          "addressCountry": "IN"
+        },
+        "contactPoint": [{
+          "@type": "ContactPoint",
+          "telephone": "+91-84362-99320",
+          "contactType": "sales",
+          "email": "admin@ezentixlabs.com",
+          "areaServed": "IN",
+          "availableLanguage": ["en", "bn", "hi"]
+        }, {
+          "@type": "ContactPoint",
+          "telephone": "+91-84362-99320",
+          "contactType": "customer support",
+          "email": "support@ezentixlabs.com",
+          "areaServed": "IN",
+          "availableLanguage": ["en", "bn", "hi"]
+        }]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://ezentixlabs.com/#website",
+        "url": "https://ezentixlabs.com/",
+        "name": "eZentix Labs",
+        "inLanguage": "en-IN",
+        "publisher": { "@id": "https://ezentixlabs.com/#organization" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://ezentixlabs.com/#webpage",
+        "url": "https://ezentixlabs.com/",
+        "name": "eZentix Labs — Bring Your Offline Business Online | Zen OS",
+        "isPartOf": { "@id": "https://ezentixlabs.com/#website" },
+        "about": { "@id": "https://ezentixlabs.com/#organization" },
+        "primaryImageOfPage": "https://ezentixlabs.com/og-image.jpg",
+        "inLanguage": "en-IN"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://ezentixlabs.com/#zen-os",
+        "name": "Zen OS",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "url": "https://ezentixlabs.com/#zen-os",
+        "publisher": { "@id": "https://ezentixlabs.com/#organization" },
+        "description": "Point-of-sale and back-office software for small offline businesses — billing, inventory, and customer records in one place."
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <div id="root"></div>
+
+  <!-- A crawler or a reader with JavaScript off still gets the company,
+       what it sells, and a way to make contact. -->
+  <noscript>
+    <h1>eZentix Labs — powered by AI, guided by technical experts</h1>
+    <p>
+      eZentix Labs brings offline businesses online. We build your online presence,
+      run your billing and back office on <strong>Zen OS</strong>, and guide the
+      transition — for shops, restaurants, clinics and more across Budbud and
+      wider West Bengal.
+    </p>
+    <p>
+      Call <a href="tel:+918436299320">+91 84362 99320</a>,
+      WhatsApp <a href="https://wa.me/918436299320">+91 84362 99320</a>,
+      or email <a href="mailto:admin@ezentixlabs.com">admin@ezentixlabs.com</a>.
+    </p>
+    <p>This site needs JavaScript for the full experience. Please enable it.</p>
+  </noscript>
+
   <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>

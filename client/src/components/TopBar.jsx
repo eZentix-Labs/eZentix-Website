@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useApp } from '../context/AppContext'
 import { LANGUAGES } from '../data/content'
 import Logo from './Logo'
@@ -24,6 +24,14 @@ function MoonIcon() {
 export default function TopBar({ onSignIn }) {
   const { t, lang, setLang, theme, toggleTheme, user, signOut } = useApp()
   const navigate = useNavigate()
+  const { pathname } = useLocation()
+
+  /* Section anchors only exist on the home page. From the portal the same
+     label has to walk back to / first, so it becomes a root-relative href.
+     These are the crawlable internal links into each section — without them
+     the header offers a search engine nothing to follow. */
+  const onHome = pathname === '/'
+  const sectionHref = (hash) => (onHome ? hash : `/${hash}`)
 
   return (
     <header className="topbar">
@@ -34,6 +42,14 @@ export default function TopBar({ onSignIn }) {
           </span>
           <span className="logo__name">{t.brand}</span>
         </Link>
+
+        <nav className="topbar__nav" aria-label={t.nav.sections}>
+          {t.footer.links.map((l) => (
+            <a key={l.href} href={sectionHref(l.href)}>
+              {l.label}
+            </a>
+          ))}
+        </nav>
 
         <div className="topbar__tools">
           {/* Location lives up here rather than in the hero, so it reads as
