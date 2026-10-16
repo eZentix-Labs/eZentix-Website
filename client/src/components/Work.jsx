@@ -9,9 +9,11 @@ import { useApp } from '../context/AppContext'
  * solution we shipped. Add more clients by adding another object to
  * `items` in each language block — nothing else needs to change.
  *
- * Cover/gallery images live in public/work/<id>/ — see that folder's
- * placeholder .svg files for the exact names to replace with real
- * photos.
+ * Cover/gallery images live in public/work/<id>/. A gallery entry is
+ * either a path, or { src, alt, width, height } — prefer the object: it
+ * gives each image its own alt text and reserves its space. Each thumbnail
+ * links to the full-size file, since a dashboard screenshot cropped to a
+ * small tile is unreadable.
  * ------------------------------------------------------------------ */
 export default function Work() {
   const { t } = useApp()
@@ -105,15 +107,21 @@ function CaseModal({ item, t, onClose }) {
         <div className="case-modal__gallery">
           <div className="case-modal__eyebrow case-modal__eyebrow--tight">{t.work.galleryLabel}</div>
           <div className="case-modal__grid">
-            {item.gallery.map((src, i) => (
-              <img
-                key={src}
-                src={src}
-                alt={`${item.client} — ${t.work.galleryLabel} (${i + 1}/${item.gallery.length})`}
-                loading="lazy"
-                decoding="async"
-              />
-            ))}
+            {item.gallery.map((g, i) => {
+              const img = typeof g === 'string' ? { src: g } : g
+              return (
+                <a key={img.src} href={img.src} target="_blank" rel="noopener">
+                  <img
+                    src={img.src}
+                    alt={img.alt || `${item.client} — ${t.work.galleryLabel} (${i + 1}/${item.gallery.length})`}
+                    width={img.width}
+                    height={img.height}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+              )
+            })}
           </div>
         </div>
 

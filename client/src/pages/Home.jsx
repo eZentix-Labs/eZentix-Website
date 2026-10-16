@@ -10,7 +10,7 @@ import Seo from '../components/Seo'
  * hero → who → what → how → why → work → CHARU POS → contact
  * Zen OS sits second from last, right before the contact block.
  */
-export default function Home({ onChoosePlan }) {
+export default function Home() {
   return (
     <>
       <Seo
@@ -23,7 +23,7 @@ export default function Home({ onChoosePlan }) {
       <HowItWorks />
       <WhyEzentixLabs />
       <Work />
-      <ZenOS onChoosePlan={onChoosePlan} />
+      <ZenOS />
       <Contact />
       <Footer />
     </>

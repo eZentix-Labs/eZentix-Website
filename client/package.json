@@ -9,6 +9,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "prebuild": "node tools/gen-sitemap.mjs",
+    "postbuild": "node tools/prerender.mjs",
     "seo": "node tools/gen-sitemap.mjs"
   },
   "dependencies": {

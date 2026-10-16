@@ -30,6 +30,15 @@ const store = {
   },
 }
 
+/* True when this visitor's saved theme, language and sound choice are the
+   defaults the build prerendered with (tools/prerender.mjs), so the first
+   client render produces the same markup as dist/index.html and can hydrate
+   it. Keep in step with the useState defaults below. */
+export const matchesPrerender = () =>
+  store.get('cb.theme', 'light') === 'light' &&
+  store.get('cb.lang', 'en') === 'en' &&
+  store.get('cb.sound', 'on') !== 'off'
+
 export function AppProvider({ children }) {
   const [theme, setTheme] = useState(() => store.get('cb.theme', 'light'))
   const [lang, setLang] = useState(() => store.get('cb.lang', 'en'))

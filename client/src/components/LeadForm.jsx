@@ -6,9 +6,11 @@ import { api } from '../api/client'
 /* ------------------------------------------------------------------
  * LEAD CAPTURE
  * ------------------------------------------------------------------
- * Posts to POST /api/leads, which writes a Lead document in MongoDB
- * (server/src/models/Lead.js). Read them back as an admin with
- * GET /api/leads.
+ * Posts to POST /api/leads. In production that is the Vercel function
+ * in api/leads.js, which sends a WhatsApp alert to our number and adds a
+ * call-back slot to the ezentixlabs@gmail.com calendar (setup: LEADS.md).
+ * In local development Vite proxies it to the Express server, which
+ * writes a Lead document to MongoDB instead.
  * ------------------------------------------------------------------ */
 
 export default function LeadForm() {
@@ -19,10 +21,10 @@ export default function LeadForm() {
     type: '',
     phone: '',
     message: '',
+    website: '', // honeypot — see the hidden field below
   })
   const [errors, setErrors] = useState({})
   const [state, setState] = useState('idle') // idle | sending | done | error
-  const [failMsg, setFailMsg] = useState('')
 
   const set = (key) => (e) => {
     setValues((v) => ({ ...v, [key]: e.target.value }))
@@ -44,13 +46,13 @@ export default function LeadForm() {
   const handleSubmit = async () => {
     if (!validate()) return
     setState('sending')
-    setFailMsg('')
     try {
       await api.createLead({ ...values, selectedServices, source: 'website' })
       clearServices()
       setState('done')
-    } catch (e) {
-      setFailMsg(e.message)
+    } catch {
+      /* Whatever went wrong, the visitor's next step is the same: the
+         localised message with our phone number, not a raw status code. */
       setState('error')
     }
   }
@@ -118,6 +120,13 @@ export default function LeadForm() {
         </div>
       </div>
 
+      {/* Honeypot. Off-screen and out of the tab order, so people never
+          fill it; form-filling bots do, and api/leads.js drops those. */}
+      <div aria-hidden="true" style={{ position: 'absolute', left: '-10000px', width: 1, height: 1, overflow: 'hidden' }}>
+        <label htmlFor="lf-website">Website</label>
+        <input id="lf-website" tabIndex={-1} autoComplete="off" value={values.website} onChange={set('website')} />
+      </div>
+
       <div className="field">
         <label htmlFor="lf-msg">
           {t.lead.message} <span style={{ color: 'var(--ink-3)', fontWeight: 500 }}>· {t.lead.optional}</span>
@@ -126,7 +135,7 @@ export default function LeadForm() {
       </div>
 
       {state === 'error' && (
-        <p className="field__err" style={{ marginBottom: 12 }}>{failMsg || t.lead.error}</p>
+        <p className="field__err" role="alert" style={{ marginBottom: 12 }}>{t.lead.error}</p>
       )}
 
       <button

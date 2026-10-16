@@ -52,8 +52,15 @@ async function request(path, { method = 'GET', body, auth = false } = {}) {
     throw new Error('Cannot reach the server. Is the API running?')
   }
 
+  /* A missing route or a platform error page is not JSON; do not let the
+     parse error stand in for the real status. */
   const text = await res.text()
-  const data = text ? JSON.parse(text) : {}
+  let data = {}
+  try {
+    data = text ? JSON.parse(text) : {}
+  } catch {
+    /* keep {} */
+  }
 
   if (!res.ok) {
     const err = new Error(data.message || `Request failed (${res.status})`)

@@ -22,20 +22,13 @@ export default function App() {
   const openSignIn = () => setAuth({ open: true, mode: 'signin' })
   const closeAuth = () => setAuth((a) => ({ ...a, open: false }))
 
-  /* Clicking a plan on the pricing table opens sign-up.
-     Swap this for your checkout flow when payments go live. */
-  const onChoosePlan = (tier) => {
-    console.info('[plan selected]', tier.id)
-    setAuth({ open: true, mode: 'signup' })
-  }
-
   return (
     <>
       <TopBar onSignIn={openSignIn} />
 
       <Suspense fallback={null}>
         <Routes>
-          <Route path="/" element={<Home onChoosePlan={onChoosePlan} />} />
+          <Route path="/" element={<Home />} />
 
           {/* Signed-in only, so it carries a noindex instead of a canonical.
               The authoritative rule is the X-Robots-Tag header in vercel.json —

@@ -1,20 +1,6 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useApp } from '../context/AppContext'
-import { CAPABILITIES, TIERS, ADD_ONS, rupee } from '../data/pricing'
-
-/* Chips are derived from TIERS[].forWhom — pricing.js stays the one
-   file that owns this copy; we just split "Chai stall, sweet shop,
-   takeaway counter" into individual chips and remember which tier
-   each phrase came from. */
-function useBizChips() {
-  return useMemo(
-    () =>
-      TIERS.flatMap((tier) =>
-        tier.forWhom.split(',').map((label) => ({ label: label.trim(), tierId: tier.id })),
-      ),
-    [],
-  )
-}
+import { CAPABILITIES } from '../data/pricing'
 
 /* ------------------------------------------------------------------
  * Signature element: a restaurant floor that fills up while you watch.
@@ -173,79 +159,11 @@ function FeatureBanners() {
 }
 
 /* ------------------------------------------------------------------ */
-function PlanCard({ tier, cycle, onChoose, matchState }) {
+/* Plans and prices are deliberately not shown on the public site — the
+   conversation sets the price. TIERS and ADD_ONS stay in data/pricing.js
+   (the account portal still reads it) if a pricing table ever comes back. */
+export default function ZenOS() {
   const { t } = useApp()
-  const isYearly = cycle === 'annual'
-  const amount = isYearly ? tier.annual : tier.monthly
-  const matchClass = matchState === 'match' ? ' plan--match' : matchState === 'dim' ? ' plan--dim' : ''
-
-  return (
-    <article className={`plan${tier.highlight ? ' plan--hero' : ''}${matchClass}`}>
-      {tier.highlight && <span className="plan__flag">{t.pos.popular}</span>}
-
-      <div className="plan__name">{tier.name}</div>
-      <div className="plan__tag">{tier.tagline}</div>
-
-      <div className="plan__price">
-        <span className="plan__amt">{rupee(amount)}</span>
-        <span className="plan__per">{isYearly ? t.pos.perYear : t.pos.perMonth}</span>
-      </div>
-      <div className="plan__alt">
-        {isYearly ? `${rupee(Math.round(tier.annual / 12))}${t.pos.perMonth}, ${t.pos.billedAnnually}` : ''}
-      </div>
-
-      <div className="plan__who">{tier.forWhom}</div>
-
-      <div className="plan__limits">
-        {tier.limits.map((l) => (
-          <div className="limit" key={l.label}>
-            <div className="limit__k">{l.label}</div>
-            <div className="limit__v">{l.value}</div>
-          </div>
-        ))}
-      </div>
-
-      <ul className="plan__list">
-        {tier.includes.map((f) => (
-          <li key={f}>
-            <span className="tick" aria-hidden="true">✓</span>
-            {f}
-          </li>
-        ))}
-      </ul>
-
-      {tier.excludes.length > 0 && (
-        <div className="plan__no">
-          <div className="plan__no-h">{t.pos.notIncluded}</div>
-          <ul>
-            {tier.excludes.map((f) => (
-              <li key={f}>
-                <span className="cross" aria-hidden="true">×</span>
-                {f}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      <button
-        className={`btn btn--block ${tier.highlight ? 'btn--primary' : 'btn--ghost'}`}
-        onClick={() => onChoose(tier)}
-      >
-        {t.pos.choose} {tier.name}
-      </button>
-    </article>
-  )
-}
-
-/* ------------------------------------------------------------------ */
-export default function ZenOS({ onChoosePlan }) {
-  const { t } = useApp()
-  const [cycle, setCycle] = useState('monthly')
-  const [activeChip, setActiveChip] = useState(null)
-  const bizChips = useBizChips()
-
-  const activeTierId = bizChips.find((c) => c.label === activeChip)?.tierId ?? null
 
   return (
     <section className="band band--tint" id="zen-os">
@@ -265,72 +183,6 @@ export default function ZenOS({ onChoosePlan }) {
           <h3 style={{ fontSize: '26px' }}>{t.pos.featuresTitle}</h3>
         </div>
         <FeatureBanners />
-
-        {/* Pricing */}
-        <div className="head" style={{ marginTop: '64px', marginBottom: '20px' }}>
-          <h3 style={{ fontSize: '26px' }}>{t.pos.pricingTitle}</h3>
-        </div>
-
-        <div className="biz-filter">
-          <div className="biz-filter__label">{t.pos.bizFilterLabel}</div>
-          <div className="biz-chips">
-            {bizChips.map((chip) => (
-              <button
-                key={chip.label}
-                type="button"
-                className="biz-chip"
-                aria-pressed={activeChip === chip.label}
-                onClick={() => setActiveChip((cur) => (cur === chip.label ? null : chip.label))}
-              >
-                {chip.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="cycle">
-          <div className="segmented" role="group" aria-label={t.pos.pricingTitle}>
-            <button onClick={() => setCycle('monthly')} aria-pressed={cycle === 'monthly'}>
-              {t.pos.monthly}
-            </button>
-            <button onClick={() => setCycle('annual')} aria-pressed={cycle === 'annual'}>
-              {t.pos.annual}
-            </button>
-          </div>
-        </div>
-        <p className="cycle__note">
-          {cycle === 'annual' && <span style={{ color: 'var(--green)', fontWeight: 700 }}>✓ </span>}
-          {t.pos.annualNote}
-        </p>
-
-        <div className="plans">
-          {TIERS.map((tier) => (
-            <PlanCard
-              key={tier.id}
-              tier={tier}
-              cycle={cycle}
-              onChoose={onChoosePlan}
-              matchState={!activeTierId ? null : tier.id === activeTierId ? 'match' : 'dim'}
-            />
-          ))}
-        </div>
-
-        {/* Add-ons */}
-        <div className="addons">
-          <h3>{t.pos.addOnsTitle}</h3>
-          {ADD_ONS.map((a) => (
-            <div className="addon" key={a.name}>
-              <div>
-                <div style={{ fontWeight: 600 }}>{a.name}</div>
-                <div className="addon__note">{a.note}</div>
-              </div>
-              <div className="addon__price">
-                {rupee(a.price)}
-                <span style={{ color: 'var(--ink-3)', fontWeight: 400 }}> / {a.unit}</span>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   )

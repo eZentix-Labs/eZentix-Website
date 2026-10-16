@@ -1,5 +1,5 @@
 import { useApp } from '../context/AppContext'
-import { CONTACT } from '../data/content'
+import { CONTACT, SOCIAL } from '../data/content'
 import LeadForm from './LeadForm'
 import Logo from './Logo'
 
@@ -112,6 +112,18 @@ export default function Contact() {
               <span className="contact-card__k">{t.contact.whatsapp}</span>
               <span className="contact-card__v">{CONTACT.phoneDisplay}</span>
             </a>
+            {SOCIAL.map((s) => (
+              <a
+                key={s.href}
+                className="contact-card"
+                href={s.href}
+                target="_blank"
+                rel="me noopener noreferrer"
+              >
+                <span className="contact-card__k">{s.label}</span>
+                <span className="contact-card__v">{s.handle}</span>
+              </a>
+            ))}
           </div>
 
           <div className="details">
@@ -183,17 +195,18 @@ export function Footer() {
               {' · '}
               <a href={`mailto:${CONTACT.admin}`}>{CONTACT.admin}</a>
             </p>
-            <div className="footer__social" hidden={t.footer.social.length === 0}>
-              {t.footer.social.map((s) => {
+            {SOCIAL.length > 0 && <p className="footer__where footer__follow">{t.footer.followTitle}</p>}
+            <div className="footer__social" hidden={SOCIAL.length === 0}>
+              {SOCIAL.map((s) => {
                 const Icon = SOCIAL_ICONS[s.label.toLowerCase().replace(/\s/g, '')]
                 return (
                   <a
-                    key={s.label}
+                    key={s.href}
                     href={s.href}
                     target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={s.label}
-                    title={s.label}
+                    rel="me noopener noreferrer"
+                    aria-label={`${s.label} ${s.handle}`}
+                    title={`${s.label} ${s.handle}`}
                   >
                     {Icon ? <Icon /> : s.label}
                   </a>

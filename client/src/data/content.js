@@ -172,21 +172,24 @@ export const content = {
       close: 'Close',
       items: [
         {
-          id: 'kulhad-chai-pizza',
-          client: 'Kulhad Chai and Pizza Cafe',
+          id: 'hotel-khoai',
+          client: 'Hotel Khoai',
           tagline:
-            'No online presence, no menu anyone could share, orders taken over phone calls and lost in the noise.',
-          cover: '/work/kulhad-chai-pizza/cover.jpg',
+            'A 28-table restaurant with a 299-dish menu — now run from one screen: orders, tables, kitchen, bills, stock and staff.',
+          cover: '/work/hotel-khoai/cover.jpg',
           gallery: [
-            '/work/kulhad-chai-pizza/1.svg',
-            '/work/kulhad-chai-pizza/2.svg',
-            '/work/kulhad-chai-pizza/3.svg',
-            '/work/kulhad-chai-pizza/4.svg',
+            { src: '/work/hotel-khoai/restaurant.webp', width: 960, height: 1280, alt: 'Hotel Khoai at night — the lit sign over the dining area' },
+            { src: '/work/hotel-khoai/orders.webp', width: 1600, height: 765, alt: 'Zen OS orders screen at Hotel Khoai — tables by seating area, ready for a new order' },
+            { src: '/work/hotel-khoai/table-map.webp', width: 1600, height: 768, alt: 'Zen OS table management — 28 tables, the walk-in queue and printable table QR codes' },
+            { src: '/work/hotel-khoai/menu.webp', width: 1600, height: 780, alt: 'Zen OS menu manager — 299 items in 29 categories, with sold-out-today switches' },
+            { src: '/work/hotel-khoai/invoices.webp', width: 1600, height: 750, alt: 'Zen OS invoices — every bill with its cash or online settlement and daily totals' },
+            { src: '/work/hotel-khoai/inventory.webp', width: 1600, height: 763, alt: 'Zen OS inventory — purchases, wastage, stock counts and food cost' },
+            { src: '/work/hotel-khoai/staff.webp', width: 1600, height: 768, alt: 'Zen OS staff records — duty, orders, attendance and pay for each waiter' },
           ],
           problem:
-            "Kulhad Chai and Pizza Cafe had no website and no menu a customer could open and send to a friend. Every order came in as a phone call or a walk-in, prices lived only in the owner's head, and there was nothing online to point a new customer toward — not even a Google search result that looked like a real business.",
+            "Hotel Khoai seats guests across four areas — indoor, AC, garden and gazebo — 28 tables in all, with a menu of nearly 300 dishes and a floor team of eight. At that size, order pads, a calculator and memory stop keeping up: a table waits while someone works out who ordered what, the day's cash and UPI have to be matched by hand, and nobody can say what is running low in the kitchen until it has run out.",
           solution:
-            'We built the cafe a menu website — every item, priced and photographed, organised the way the counter actually sells them. It is linked from their Google Business Profile and shared straight over WhatsApp, so a customer can browse, decide and order without a phone call. The owner updates prices and items themselves — no developer needed for a menu change.',
+            'We put the whole restaurant on Zen OS. Orders are taken against a live table map, so the floor and the counter see the same thing. The full menu — 299 items in 29 categories — is managed in one place, and any dish can be switched off or marked sold out for the day in a tap. Every bill is recorded with how it was paid, and the day closes with cash and online totals that add up. Stock, purchases and wastage are tracked in the same system, and each waiter has their own record of shifts, orders and pay.',
         },
       ],
     },
@@ -275,6 +278,7 @@ export const content = {
       cta: 'Start a conversation',
       exploreTitle: 'Explore',
       reachTitle: 'Reach us',
+      followTitle: 'Follow us',
       where: 'Budbud, West Bengal — working with businesses across the district and remotely beyond it.',
       links: [
         { label: 'Services', href: '#services' },
@@ -283,10 +287,6 @@ export const content = {
         { label: 'Client Work', href: '#work' },
         { label: 'Contact', href: '#talk' },
       ],
-      /* TODO: replace with the real profile URLs, then mirror them into the
-         sameAs array in index.html so Google links the site to the accounts.
-         Left empty on purpose — bare platform homepages are not profiles. */
-      social: [],
       rights: '© 2026 eZentix Labs. All rights reserved.',
       note: '',
       webfont: 'Bengali display type — Lipighor',
@@ -456,21 +456,24 @@ export const content = {
       close: 'বন্ধ করুন',
       items: [
         {
-          id: 'kulhad-chai-pizza',
-          client: 'Kulhad Chai and Pizza Cafe',
+          id: 'hotel-khoai',
+          client: 'Hotel খোয়াই',
           tagline:
-            'কোনো ওয়েবসাইট ছিল না, শেয়ার করার মতো মেনু ছিল না, অর্ডার আসত শুধু ফোন কলে আর অনেকটাই হারিয়ে যেত।',
-          cover: '/work/kulhad-chai-pizza/cover.jpg',
+            '২৮টা টেবিল আর ২৯৯টা পদের মেনুর রেস্তোরাঁ — অর্ডার, টেবিল, কিচেন, বিল, স্টক আর স্টাফ এখন এক স্ক্রিনে।',
+          cover: '/work/hotel-khoai/cover.jpg',
           gallery: [
-            '/work/kulhad-chai-pizza/1.svg',
-            '/work/kulhad-chai-pizza/2.svg',
-            '/work/kulhad-chai-pizza/3.svg',
-            '/work/kulhad-chai-pizza/4.svg',
+            { src: '/work/hotel-khoai/restaurant.webp', width: 960, height: 1280, alt: 'রাতের Hotel খোয়াই — আলো জ্বলা সাইনবোর্ড আর খাওয়ার জায়গা' },
+            { src: '/work/hotel-khoai/orders.webp', width: 1600, height: 765, alt: 'Hotel খোয়াই-এ Zen OS-এর অর্ডার স্ক্রিন — বসার জায়গা অনুযায়ী টেবিল, নতুন অর্ডারের জন্য তৈরি' },
+            { src: '/work/hotel-khoai/table-map.webp', width: 1600, height: 768, alt: 'Zen OS টেবিল ম্যানেজমেন্ট — ২৮টা টেবিল, ওয়াক-ইন লাইন আর টেবিলের QR কোড' },
+            { src: '/work/hotel-khoai/menu.webp', width: 1600, height: 780, alt: 'Zen OS মেনু ম্যানেজার — ২৯টা ক্যাটাগরিতে ২৯৯টা আইটেম, "আজ শেষ" সুইচসহ' },
+            { src: '/work/hotel-khoai/invoices.webp', width: 1600, height: 750, alt: 'Zen OS ইনভয়েস — প্রতিটা বিল, ক্যাশ না অনলাইন, আর দিনের মোট হিসেব' },
+            { src: '/work/hotel-khoai/inventory.webp', width: 1600, height: 763, alt: 'Zen OS ইনভেন্টরি — কেনাকাটা, নষ্ট হওয়া মাল, স্টক গোনা আর খাবারের খরচ' },
+            { src: '/work/hotel-khoai/staff.webp', width: 1600, height: 768, alt: 'Zen OS স্টাফ রেকর্ড — প্রত্যেক ওয়েটারের ডিউটি, অর্ডার, হাজিরা আর বেতন' },
           ],
           problem:
-            'Kulhad Chai and Pizza Cafe-র কোনো ওয়েবসাইট ছিল না, এমন কোনো মেনুও ছিল না যা একজন ক্রেতা খুলে বন্ধুকে পাঠাতে পারেন। প্রতিটা অর্ডার আসত ফোন কল বা সরাসরি এসে, দামগুলো শুধু মালিকের মাথায় থাকত, আর নতুন কাউকে অনলাইনে দেখানোর মতো কিছুই ছিল না — এমনকি একটা ভালো Google সার্চ রেজাল্টও না।',
+            'Hotel খোয়াই-তে অতিথিরা বসেন চারটে জায়গায় — ইনডোর, এসি, গার্ডেন আর গাজেবো — সব মিলিয়ে ২৮টা টেবিল, প্রায় ৩০০ পদের মেনু আর আটজনের ফ্লোর টিম। এত বড় জায়গায় অর্ডার প্যাড, ক্যালকুলেটর আর মনে রাখার ওপর ভরসা করে আর চলে না: কে কী অর্ডার দিয়েছে তা মেলাতে গিয়ে টেবিলকে অপেক্ষা করতে হয়, দিনের শেষে ক্যাশ আর UPI হাতে মেলাতে হয়, আর কিচেনে কী ফুরিয়ে আসছে তা ফুরিয়ে যাওয়ার আগে কেউ বলতে পারে না।',
           solution:
-            'আমরা ক্যাফেটার জন্য একটা মেনু ওয়েবসাইট বানিয়েছি — প্রতিটা আইটেম, দাম আর ছবিসহ, ঠিক যেভাবে কাউন্টার থেকে বিক্রি হয় সেভাবে সাজানো। এটা তাদের Google Business Profile থেকে লিংক করা আর সরাসরি WhatsApp-এ শেয়ার করা যায়, ফলে ক্রেতা ফোন না করেই দেখে, ঠিক করে আর অর্ডার করতে পারেন। দাম বা আইটেম বদলাতে মালিক নিজেই করতে পারেন, কোনো ডেভেলপার লাগে না।',
+            'আমরা পুরো রেস্তোরাঁটা Zen OS-এ তুলে দিয়েছি। অর্ডার নেওয়া হয় লাইভ টেবিল ম্যাপ থেকে, তাই ফ্লোর আর কাউন্টার একই জিনিস দেখে। পুরো মেনু — ২৯টা ক্যাটাগরিতে ২৯৯টা আইটেম — এক জায়গা থেকে চালানো হয়, আর যেকোনো পদ এক ট্যাপে বন্ধ বা "আজ শেষ" করে দেওয়া যায়। প্রতিটা বিল কীভাবে পেমেন্ট হল সেটা সহ রেকর্ড হয়, আর দিন বন্ধ হয় ক্যাশ ও অনলাইনের এমন হিসেবে যা মিলে যায়। স্টক, কেনাকাটা আর নষ্ট হওয়া মাল একই সিস্টেমে ট্র্যাক হয়, আর প্রত্যেক ওয়েটারের শিফট, অর্ডার আর বেতনের নিজস্ব হিসেব থাকে।',
         },
       ],
     },
@@ -491,7 +494,7 @@ export const content = {
       privacy: 'আপনার তথ্য শুধু আপনার সঙ্গে যোগাযোগ করতেই ব্যবহার হয়। কোনো লিস্ট নয়, স্প্যাম নয়।',
       optional: 'ইচ্ছে হলে',
       done: 'পেয়েছি। দুই কাজের দিনের মধ্যে ফোন করব।',
-      error: 'পাঠানো গেল না। বদলে +৯১ ৭৩১৮৭ ৪৯৪৯৮ নম্বরে ফোন করুন।',
+      error: 'পাঠানো গেল না। বদলে +৯১ ৮৪৩৬২ ৯৯৩২০ নম্বরে ফোন করুন।',
       required: 'এটা লিখুন',
       badPhone: '১০ সংখ্যার নম্বর দিন',
     },
@@ -559,6 +562,7 @@ export const content = {
       cta: 'কথা শুরু করুন',
       exploreTitle: 'ঘুরে দেখুন',
       reachTitle: 'যোগাযোগ',
+      followTitle: 'আমাদের ফলো করুন',
       where: 'বুদবুদ, পশ্চিমবঙ্গ — গোটা জেলার ব্যবসার সঙ্গে কাজ করি, তার বাইরেও দূর থেকে।',
       links: [
         { label: 'পরিষেবা', href: '#services' },
@@ -567,10 +571,6 @@ export const content = {
         { label: 'ক্লায়েন্ট ওয়ার্ক', href: '#work' },
         { label: 'যোগাযোগ', href: '#talk' },
       ],
-      /* TODO: replace with the real profile URLs, then mirror them into the
-         sameAs array in index.html so Google links the site to the accounts.
-         Left empty on purpose — bare platform homepages are not profiles. */
-      social: [],
       note: '',
       rights: '© ২০২৬ eZentix Labs। সর্বস্বত্ব সংরক্ষিত।',
       webfont: 'বাংলা ফন্ট — লিপিঘর',
@@ -740,21 +740,24 @@ export const content = {
       close: 'बंद करें',
       items: [
         {
-          id: 'kulhad-chai-pizza',
-          client: 'Kulhad Chai and Pizza Cafe',
+          id: 'hotel-khoai',
+          client: 'Hotel Khoai',
           tagline:
-            'कोई वेबसाइट नहीं थी, शेयर करने लायक कोई मेनू नहीं था, ऑर्डर सिर्फ फोन कॉल पर आते और अक्सर छूट जाते।',
-          cover: '/work/kulhad-chai-pizza/cover.jpg',
+            '28 टेबल और 299 डिश वाले मेनू का रेस्टोरेंट — ऑर्डर, टेबल, किचन, बिल, स्टॉक और स्टाफ अब एक ही स्क्रीन पर।',
+          cover: '/work/hotel-khoai/cover.jpg',
           gallery: [
-            '/work/kulhad-chai-pizza/1.svg',
-            '/work/kulhad-chai-pizza/2.svg',
-            '/work/kulhad-chai-pizza/3.svg',
-            '/work/kulhad-chai-pizza/4.svg',
+            { src: '/work/hotel-khoai/restaurant.webp', width: 960, height: 1280, alt: 'रात में Hotel Khoai — रोशन साइनबोर्ड और खाने की जगह' },
+            { src: '/work/hotel-khoai/orders.webp', width: 1600, height: 765, alt: 'Hotel Khoai में Zen OS ऑर्डर स्क्रीन — बैठने की जगह के हिसाब से टेबल, नए ऑर्डर के लिए तैयार' },
+            { src: '/work/hotel-khoai/table-map.webp', width: 1600, height: 768, alt: 'Zen OS टेबल मैनेजमेंट — 28 टेबल, वॉक-इन कतार और टेबल के QR कोड' },
+            { src: '/work/hotel-khoai/menu.webp', width: 1600, height: 780, alt: 'Zen OS मेनू मैनेजर — 29 कैटेगरी में 299 आइटम, "आज खत्म" स्विच के साथ' },
+            { src: '/work/hotel-khoai/invoices.webp', width: 1600, height: 750, alt: 'Zen OS इनवॉइस — हर बिल, कैश या ऑनलाइन भुगतान, और दिन का कुल हिसाब' },
+            { src: '/work/hotel-khoai/inventory.webp', width: 1600, height: 763, alt: 'Zen OS इन्वेंटरी — खरीद, बर्बादी, स्टॉक गिनती और खाने की लागत' },
+            { src: '/work/hotel-khoai/staff.webp', width: 1600, height: 768, alt: 'Zen OS स्टाफ रिकॉर्ड — हर वेटर की ड्यूटी, ऑर्डर, हाज़िरी और वेतन' },
           ],
           problem:
-            'Kulhad Chai and Pizza Cafe की कोई वेबसाइट नहीं थी, ऐसा कोई मेनू नहीं था जिसे कोई ग्राहक खोलकर दोस्त को भेज सके। हर ऑर्डर फोन कॉल या सीधे आकर लिया जाता, दाम सिर्फ मालिक के दिमाग़ में रहते, और किसी नए ग्राहक को ऑनलाइन दिखाने के लिए कुछ नहीं था — यहाँ तक कि एक अच्छा Google सर्च रिज़ल्ट भी नहीं।',
+            'Hotel Khoai में मेहमान चार जगह बैठते हैं — इनडोर, एसी, गार्डन और गज़ेबो — कुल 28 टेबल, लगभग 300 डिश का मेनू और आठ लोगों की फ्लोर टीम। इतने बड़े पैमाने पर ऑर्डर पैड, कैलकुलेटर और याददाश्त से काम नहीं चलता: किसने क्या ऑर्डर किया यह मिलाने में टेबल को इंतज़ार करना पड़ता है, दिन का कैश और UPI हाथ से मिलाना पड़ता है, और किचन में क्या खत्म होने वाला है यह खत्म होने से पहले कोई नहीं बता पाता।',
           solution:
-            'हमने कैफ़े के लिए एक मेनू वेबसाइट बनाई — हर आइटम, दाम और तस्वीर के साथ, ठीक उसी तरह सजाया जैसे काउंटर पर असल में बिकता है। यह उनकी Google Business Profile से जुड़ी है और सीधे WhatsApp पर शेयर की जाती है, जिससे ग्राहक बिना फोन किए देख सकता है, तय कर सकता है और ऑर्डर कर सकता है। दाम या आइटम बदलने का काम मालिक ख़ुद कर सकते हैं, किसी डेवलपर की ज़रूरत नहीं।',
+            'हमने पूरा रेस्टोरेंट Zen OS पर चला दिया। ऑर्डर लाइव टेबल मैप से लिए जाते हैं, इसलिए फ्लोर और काउंटर एक ही चीज़ देखते हैं। पूरा मेनू — 29 कैटेगरी में 299 आइटम — एक जगह से संभाला जाता है, और किसी भी डिश को एक टैप में बंद या "आज खत्म" किया जा सकता है। हर बिल इस जानकारी के साथ दर्ज होता है कि भुगतान कैसे हुआ, और दिन कैश और ऑनलाइन के ऐसे हिसाब के साथ बंद होता है जो मिलता है। स्टॉक, खरीद और बर्बादी उसी सिस्टम में ट्रैक होते हैं, और हर वेटर की शिफ्ट, ऑर्डर और वेतन का अपना रिकॉर्ड रहता है।',
         },
       ],
     },
@@ -843,6 +846,7 @@ export const content = {
       cta: 'बातचीत शुरू करें',
       exploreTitle: 'देखें',
       reachTitle: 'संपर्क',
+      followTitle: 'हमें फॉलो करें',
       where: 'बुदबुद, पश्चिम बंगाल — पूरे ज़िले के कारोबारों के साथ, और उससे आगे दूर से भी।',
       links: [
         { label: 'सेवाएँ', href: '#services' },
@@ -851,10 +855,6 @@ export const content = {
         { label: 'क्लाइंट वर्क', href: '#work' },
         { label: 'संपर्क', href: '#talk' },
       ],
-      /* TODO: replace with the real profile URLs, then mirror them into the
-         sameAs array in index.html so Google links the site to the accounts.
-         Left empty on purpose — bare platform homepages are not profiles. */
-      social: [],
       note: '',
       rights: '© २०२६ eZentix Labs। सर्वाधिकार सुरक्षित।',
       webfont: 'Bengali display type — Lipighor',
@@ -863,11 +863,21 @@ export const content = {
   },
 }
 
+/* Our social accounts. Platform names and handles do not translate, so one
+   list serves every language. Add an account here and it shows up in the
+   footer icons, as a card in the contact section, and in the JSON-LD
+   sameAs list that ties the accounts to the site for Google
+   (vite.config.js). `label` picks the icon in Contact.jsx. Real profile
+   URLs only — a bare platform homepage is not a profile. */
+export const SOCIAL = [
+  { label: 'Instagram', handle: '@ezentix', href: 'https://www.instagram.com/ezentix/' },
+]
+
 export const CONTACT = {
   phone: '+918436299320',
   phoneDisplay: '+91 84362 99320',
   whatsapp: '918436299320',
-  admin: 'admin@ezentixlabs.com',
-  support: 'support@ezentixlabs.com',
+  admin: 'admin@ezentix.com',
+  support: 'support@ezentix.com',
   posUrl: 'https://pos.charubalainc.com',
 }
