@@ -41,6 +41,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="image" href="/logo.svg" />
+  <!-- Mooxy is referenced from the stylesheet, so without this it is only
+       discovered once the CSS has been parsed. crossorigin is required even
+       same-origin: font fetches are CORS-mode, and a mismatch downloads twice. -->
+  <link rel="preload" as="font" type="font/ttf" href="/fonts/Mooxy.ttf" crossorigin />
   <!-- The font CSS is fetched without blocking first paint, then promoted to a
        real stylesheet once it lands. The families already carry display=swap,
        so text is painted in the fallback immediately either way; this just stops

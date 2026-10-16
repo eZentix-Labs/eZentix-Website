@@ -44,6 +44,9 @@
 
   /* Functional signal colours (floor states, statuses) */
   --amber: #e08a1e;
+  /* Amber is a fill/border colour; text on an amber tint needs this darker
+     shade to stay above 4.5:1. */
+  --amber-ink: #8f5208;
   --green: #12a06b;
   --red: #cf3d3d;
 
@@ -54,7 +57,7 @@
   --surface-2: #f4f0f9;
   --ink: #0b0a10;
   --ink-2: #55506b;
-  --ink-3: #8a85a0;
+  --ink-3: #6b6680; /* >= 4.5:1 on --bg, --bg-alt and --surface-2 */
   --line: #e6e1ef;
   --line-strong: #cec6de;
   --shadow: 0 1px 2px rgba(11, 10, 16, 0.04), 0 8px 24px rgba(11, 10, 16, 0.06);
@@ -87,7 +90,8 @@
   --surface-2: #1d1829;
   --ink: #f6f4fa;
   --ink-2: #b0a9c4;
-  --ink-3: #7c7594;
+  --ink-3: #9a93b2; /* >= 4.5:1 on dark --surface and --surface-2 */
+  --amber-ink: #f0a443;
   --line: #262034;
   --line-strong: #362e48;
   --purple-tint: #1e1430;
@@ -1171,6 +1175,7 @@ ul {
 [data-theme='dark'] .table-cell[data-state='billed'] {
   background: #2a1946;
   background: color-mix(in srgb, var(--purple) 26%, transparent);
+  color: var(--purple-300);
 }
 
 [data-theme='dark'] .pullquote {
@@ -1554,7 +1559,6 @@ ul {
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  opacity: 0.75;
 }
 
 .table-cell[data-state='free'] {
@@ -1565,7 +1569,7 @@ ul {
   background: #fdf3e4;
   background: color-mix(in srgb, var(--amber) 16%, transparent);
   border-color: var(--amber);
-  color: var(--amber);
+  color: var(--amber-ink);
 }
 
 .table-cell[data-state='billed'] {
@@ -2295,7 +2299,7 @@ ul {
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #7d7595;
+  color: #958eae; /* 6:1 on the #14111c footer */
   margin-bottom: 18px;
 }
 
@@ -2387,7 +2391,7 @@ ul {
   padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.09);
   font-size: 13px;
-  color: #7d7595;
+  color: #958eae;
 }
 
 .footer__bar-right {
@@ -2536,25 +2540,41 @@ ul {
 .banners__dots {
   display: flex;
   align-items: center;
-  gap: 8px;
 }
 
+/* The button itself is the 24px touch target; the visible dot is drawn
+   inside it, so the look is unchanged. */
 .banners__dot {
+  display: grid;
+  place-items: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.banners__dot::before {
+  content: '';
   width: 8px;
   height: 8px;
-  padding: 0;
   border-radius: 50%;
   background: var(--line-strong);
   transition: background 0.2s ease, width 0.25s ease;
 }
 
 .banners__dot.is-on {
+  min-width: 34px;
+}
+
+.banners__dot.is-on::before {
   width: 26px;
   border-radius: var(--r-pill);
   background: var(--purple);
 }
 
-[data-theme='dark'] .banners__dot.is-on {
+[data-theme='dark'] .banners__dot.is-on::before {
   background: var(--purple-300);
 }
 
@@ -3595,16 +3615,6 @@ ul {
     flex-direction: column;
     align-items: stretch;
     text-align: center;
-  }
-
-  /* Slider dots: same look, a finger-sized target. */
-  .banners__dot {
-    position: relative;
-  }
-  .banners__dot::before {
-    content: '';
-    position: absolute;
-    inset: -16px -5px;
   }
 
   /* Contact: compact cards. */
