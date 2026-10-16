@@ -18,11 +18,11 @@ export default function Portal() {
      we know whether the token is still good. */
   if (authLoading) {
     return (
-      <div className="portal">
+      <main className="portal">
         <div className="wrap portal__head">
           <p>…</p>
         </div>
-      </div>
+      </main>
     )
   }
 
@@ -31,14 +31,14 @@ export default function Portal() {
   /* Signed in, but GET /api/account has not landed yet (or failed). */
   if (!account) {
     return (
-      <div className="portal">
+      <main className="portal">
         <div className="wrap portal__head">
           <h1>
             {t.portal.greeting}, {user.businessName}
           </h1>
           <p>{t.portal.subtitle}</p>
         </div>
-      </div>
+      </main>
     )
   }
 
@@ -49,7 +49,7 @@ export default function Portal() {
   const expiringSoon = left <= 10
 
   return (
-    <div className="portal">
+    <main className="portal">
       <div className="wrap portal__head">
         <h1>
           {t.portal.greeting}, {user.businessName}
@@ -239,6 +239,6 @@ export default function Portal() {
           </section>
         </aside>
       </div>
-    </div>
+    </main>
   )
 }

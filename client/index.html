@@ -7,18 +7,14 @@
   <!-- Crawlers read this file without running JavaScript, so the home page's
        full SEO head lives here statically. Seo.jsx only rewrites it when the
        router moves to a different route (e.g. /account -> noindex). -->
-  <title>eZentix Labs — Software Company in Budbud, West Bengal | Zen OS</title>
-  <meta name="description" content="eZentix Labs is a software company in Budbud, West Bengal — makers of Zen OS billing and restaurant software, plus websites and online presence for local shops." />
-  <!-- Google ignores meta keywords; it ranks on the title, description,
-       visible copy and links. Kept because Bing and others still glance at
-       it, and as a record of the searches this page is aimed at. -->
-  <meta name="keywords" content="eZentix, eZentix Labs, Ezentix Labs Budbud, Zen OS, Zen OS software, Zen OS billing software, software company in Budbud, Budbud software company, Bud Bud software company, software company in Purba Bardhaman, software company in West Bengal, billing software West Bengal, restaurant billing software, POS software, website design Budbud" />
+  <title>Software Company in Budbud — Zen OS POS &amp; eZentix Labs</title>
+  <meta name="description" content="Discover billing software, restaurant POS and website development in Budbud with eZentix Labs. Built for local businesses in West Bengal. Book a demo." />
   <link rel="canonical" href="%ORIGIN%/" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
   <meta name="theme-color" content="#5F259F" />
   <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-  <link rel="apple-touch-icon" href="/logo.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
   <meta property="og:site_name" content="eZentix Labs" />
   <meta property="og:title" content="eZentix Labs — Bring Your Offline Business Online" />
@@ -40,7 +36,6 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="image" href="/logo.svg" />
   <!-- Mooxy is referenced from the stylesheet, so without this it is only
        discovered once the CSS has been parsed. crossorigin is required even
        same-origin: font fetches are CORS-mode, and a mismatch downloads twice. -->
@@ -54,91 +49,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" media="print" onload="this.media='all';this.onload=null" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" /></noscript>
 
-  <!-- Structured data. @id values are stable URIs so the three nodes link to
-       each other instead of being read as three unrelated entities.
-       NOTE: streetAddress is deliberately absent — fill it in and it will
-       also need to match the Google Business Profile exactly. -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "%ORIGIN%/#organization",
-        "name": "eZentix Labs",
-        "alternateName": ["eZentix", "Ezentix Labs"],
-        "url": "%ORIGIN%/",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "%ORIGIN%/logo.svg"
-        },
-        "image": "%ORIGIN%/og-image.jpg",
-        "description": "eZentix Labs is a software company in Budbud (Bud Bud), Purba Bardhaman, West Bengal. It makes Zen OS billing and restaurant software and builds websites and online presence for local shops, restaurants and clinics.",
-        "knowsAbout": ["Billing software", "Restaurant POS software", "Inventory management software", "Website design", "Social media management", "Online presence for local businesses"],
-        "email": "admin@ezentix.com",
-        "telephone": "+91-84362-99320",
-        "sameAs": %SAME_AS%,
-        "areaServed": [
-          { "@type": "City", "name": "Budbud" },
-          { "@type": "AdministrativeArea", "name": "Purba Bardhaman district" },
-          { "@type": "State", "name": "West Bengal" }
-        ],
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Budbud",
-          "addressRegion": "West Bengal",
-          "postalCode": "713403",
-          "addressCountry": "IN"
-        },
-        "contactPoint": [{
-          "@type": "ContactPoint",
-          "telephone": "+91-84362-99320",
-          "contactType": "sales",
-          "email": "admin@ezentix.com",
-          "areaServed": "IN",
-          "availableLanguage": ["en", "bn", "hi"]
-        }, {
-          "@type": "ContactPoint",
-          "telephone": "+91-84362-99320",
-          "contactType": "customer support",
-          "email": "support@ezentix.com",
-          "areaServed": "IN",
-          "availableLanguage": ["en", "bn", "hi"]
-        }]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "%ORIGIN%/#website",
-        "url": "%ORIGIN%/",
-        "name": "eZentix Labs",
-        "alternateName": "eZentix",
-        "inLanguage": "en-IN",
-        "publisher": { "@id": "%ORIGIN%/#organization" }
-      },
-      {
-        "@type": "WebPage",
-        "@id": "%ORIGIN%/#webpage",
-        "url": "%ORIGIN%/",
-        "name": "eZentix Labs — Software Company in Budbud, West Bengal | Zen OS",
-        "isPartOf": { "@id": "%ORIGIN%/#website" },
-        "about": { "@id": "%ORIGIN%/#organization" },
-        "primaryImageOfPage": "%ORIGIN%/og-image.jpg",
-        "inLanguage": "en-IN"
-      },
-      {
-        "@type": "SoftwareApplication",
-        "@id": "%ORIGIN%/#zen-os",
-        "name": "Zen OS",
-        "alternateName": ["ZenOS", "Zen OS billing software"],
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Web",
-        "url": "%ORIGIN%/#zen-os",
-        "publisher": { "@id": "%ORIGIN%/#organization" },
-        "description": "Zen OS by eZentix Labs (Budbud, West Bengal): billing, point-of-sale and back-office software for restaurants and shops — orders, tables, kitchen tickets, inventory, staff and daily reports in one place."
-      }
-    ]
-  }
-  </script>
+  <!-- Route metadata and JSON-LD are generated by src/seo/head.js. -->
 </head>
 <body>
   <div id="root"></div>

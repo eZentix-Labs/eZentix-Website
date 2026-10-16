@@ -3,6 +3,5 @@
 
 User-agent: *
 Allow: /
-Disallow: /account
 
 Sitemap: https://www.ezentix.com/sitemap.xml

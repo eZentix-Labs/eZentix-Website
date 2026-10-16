@@ -4,15 +4,17 @@
  *
  * Runs automatically after `npm run build` via the postbuild script. It
  * reuses the client build's index.html (hashed asset links, SEO head) and
- * only fills in <div id="root">, so the output is still a plain static site.
+ * fills the homepage root and emits a separate account shell. The output
+ * remains a plain static site.
  *
  * Only `/` is prerendered: it is the one indexable route in src/seo/site.js.
- * /account is noindex and signed-in only, so it stays client-rendered.
+ * /account gets a separate noindex HTML shell and stays client-rendered.
  */
 import { readFileSync, writeFileSync, rmSync } from 'node:fs'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { dirname, resolve } from 'node:path'
 import { build } from 'vite'
+import { renderPageHead } from '../src/seo/head.js'
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const DIST = resolve(ROOT, 'dist')
@@ -32,6 +34,10 @@ const indexPath = resolve(DIST, 'index.html')
 const template = readFileSync(indexPath, 'utf8')
 const EMPTY_ROOT = '<div id="root"></div>'
 if (!template.includes(EMPTY_ROOT)) throw new Error('[prerender] no empty #root in dist/index.html')
+
+// Account has its own head and an empty client-rendered root. It never ships
+// the homepage's body, canonical or structured data. Vercel cleanUrls serves it.
+writeFileSync(resolve(DIST, 'account.html'), renderPageHead(template, '/account'))
 
 const appHtml = render('/')
 writeFileSync(indexPath, template.replace(EMPTY_ROOT, `<div id="root">${appHtml}</div>`))

@@ -1,6 +1,7 @@
 import { useApp } from '../context/AppContext'
 import Logo from './Logo'
 import Rich from './Rich'
+import { HOME_H1 } from '../seo/site'
 import { waLink } from './Contact'
 
 /* ------------------------------------------------------------------
@@ -229,11 +230,12 @@ export default function Hero() {
           {/* Says, in plain words above the headline, what Google needs to
               match: the brand and what and where it is. */}
           <p className="eyebrow hero__kicker">{t.hero.kicker}</p>
-          <h1>
+          <h1>{HOME_H1}</h1>
+          <h2 className="hero__tagline">
             {t.hero.title.map((line, i) => (
               <span key={i}>{line}</span>
             ))}
-          </h1>
+          </h2>
 
           <p className="hero__sub"><Rich text={t.hero.sub} /></p>
           <p className="hero__body">{t.hero.body}</p>

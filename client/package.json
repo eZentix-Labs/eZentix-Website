@@ -3,14 +3,16 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Charubala LLP — agency site, lead capture, and customer portal",
+  "description": "Charubala LLP \u00e2\u20ac\u201d agency site, lead capture, and customer portal",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "prebuild": "node tools/gen-sitemap.mjs",
     "postbuild": "node tools/prerender.mjs",
-    "seo": "node tools/gen-sitemap.mjs"
+    "seo": "node tools/gen-sitemap.mjs",
+    "images": "node tools/prepare-images.mjs",
+    "check:seo": "node tools/check-seo.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -19,6 +21,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",
+    "sharp": "^0.35.5",
     "vite": "^5.4.8"
   }
 }

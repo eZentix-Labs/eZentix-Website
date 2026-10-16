@@ -772,11 +772,19 @@ ul {
   line-height: 1.08;
 }
 
-.hero h1 span {
+.hero__tagline {
+  margin-top: 18px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.15;
+}
+
+.hero__tagline span {
   display: block;
 }
 
-.hero h1 span:last-child {
+.hero__tagline span:last-child {
   color: var(--purple);
 }
 

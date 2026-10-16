@@ -11,15 +11,30 @@ const TABLE_COUNT = 12
 
 function LiveFloor() {
   const { t } = useApp()
+  const floorRef = useRef(null)
+  const [visible, setVisible] = useState(false)
   const [tables, setTables] = useState(() =>
     Array.from({ length: TABLE_COUNT }, (_, i) => (i < 4 ? 'occupied' : i < 6 ? 'billed' : 'free')),
   )
 
   useEffect(() => {
+    if (!('IntersectionObserver' in window)) {
+      setVisible(true)
+      return
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      setVisible(entry.isIntersecting)
+    })
+    observer.observe(floorRef.current)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reduce) return
+    if (reduce || !visible) return
 
     const id = setInterval(() => {
+      if (document.hidden) return
       setTables((prev) => {
         const next = [...prev]
         const i = Math.floor(Math.random() * TABLE_COUNT)
@@ -30,12 +45,12 @@ function LiveFloor() {
     }, 1600)
 
     return () => clearInterval(id)
-  }, [])
+  }, [visible])
 
   const label = { free: t.pos.free, occupied: t.pos.occupied, billed: t.pos.billed }
 
   return (
-    <div className="floor">
+    <div className="floor" ref={floorRef}>
       <div className="floor__top">
         <div>
           <div className="floor__title">{t.pos.floorTitle}</div>

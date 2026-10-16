@@ -38,3 +38,16 @@ export const ROUTES = [
     indexable: false,
   },
 ]
+
+// Shared by static HTML generation and client-side navigation.
+export const PAGE_SEO = {
+  '/': {
+    title: 'Software Company in Budbud — Zen OS POS & eZentix Labs',
+    description: 'Discover billing software, restaurant POS and website development in Budbud with eZentix Labs. Built for local businesses in West Bengal. Book a demo.',
+  },
+  '/account': {
+    title: 'Your eZentix Labs Account — Subscriptions & Support',
+    description: 'Sign in to your eZentix Labs account to view your subscription, check invoices, access Zen OS and contact support for help running your business.',
+  },
+}
+export const HOME_H1 = 'Business software and websites for businesses in Budbud'

@@ -1,20 +1,16 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { ORIGIN } from './src/seo/site.js'
-import { SOCIAL } from './src/data/content.js'
+import { renderPageHead } from './src/seo/head.js'
 
-/* index.html carries the canonical, Open Graph and JSON-LD URLs statically
-   so crawlers see them without JavaScript. They are written as %ORIGIN% and
-   filled in here, so src/seo/site.js stays the only place the domain lives.
-   %SAME_AS% likewise comes from the SOCIAL list in src/data/content.js. */
+/* Emit route metadata and linked business/service JSON-LD in static HTML.
+   The postbuild step applies the same metadata function to /account. */
 const injectOrigin = () => ({
   name: 'inject-origin',
   /* 'pre' so the URLs are real before Vite parses the HTML: it decodes every
      href, and a bare % is not a valid URI. */
   transformIndexHtml: { order: 'pre', handler: (html) =>
-      html
-        .replaceAll('%ORIGIN%', ORIGIN)
-        .replaceAll('%SAME_AS%', JSON.stringify(SOCIAL.map((s) => s.href))),
+      renderPageHead(html.replaceAll('%ORIGIN%', ORIGIN), '/'),
   },
 })
 

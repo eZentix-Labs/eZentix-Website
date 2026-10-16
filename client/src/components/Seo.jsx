@@ -1,67 +1,53 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import { ORIGIN, ROUTES, abs } from '../seo/site'
+import { PAGE_SEO, ROUTES, OG_IMAGE, abs } from '../seo/site'
+import { HOME_SCHEMA } from '../seo/schema'
 
-/*
- * Keeps <title>, the meta description, the canonical link and the robots
- * directive in step with the current route.
- *
- * index.html already ships the home page's head statically — that is the copy
- * crawlers see before any JavaScript runs, and it is the one that matters for
- * ranking. This component exists for the client-side navigations that happen
- * afterwards, chiefly so /account is never indexed and never leaks a canonical
- * pointing at the home page.
- */
-
-const upsertMeta = (selector, attrs) => {
-  let el = document.head.querySelector(selector)
+const upsertMeta = (key, value) => {
+  const attr = key.startsWith('og:') ? 'property' : 'name'
+  let el = document.head.querySelector(`meta[${attr}="${key}"]`)
   if (!el) {
     el = document.createElement('meta')
+    el.setAttribute(attr, key)
     document.head.appendChild(el)
   }
-  Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v))
-  return el
+  el.setAttribute('content', value)
 }
 
-const upsertCanonical = (href) => {
-  let el = document.head.querySelector('link[rel="canonical"]')
-  if (!el) {
-    el = document.createElement('link')
-    el.setAttribute('rel', 'canonical')
-    document.head.appendChild(el)
-  }
-  el.setAttribute('href', href)
-}
-
-export default function Seo({ title, description }) {
+// The build emits these same values statically. Keep them in sync when
+// navigating between the public homepage and the private customer portal.
+export default function Seo() {
   const { pathname } = useLocation()
-
   useEffect(() => {
-    if (title) document.title = title
-    if (description) {
-      upsertMeta('meta[name="description"]', { name: 'description', content: description })
-      upsertMeta('meta[property="og:description"]', { property: 'og:description', content: description })
+    const path = pathname.replace(/\/+$/, '') || '/'
+    const page = PAGE_SEO[path] || PAGE_SEO['/account']
+    const indexable = ROUTES.find((r) => r.path === path)?.indexable
+    document.title = page.title
+    upsertMeta('description', page.description)
+    upsertMeta('robots', indexable
+      ? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+      : 'noindex')
+    for (const prefix of ['og', 'twitter']) {
+      upsertMeta(`${prefix}:title`, page.title)
+      upsertMeta(`${prefix}:description`, page.description)
+      upsertMeta(`${prefix}:image`, OG_IMAGE)
     }
-
-    /* Strip the query string and any trailing slash noise: a canonical must
-       name exactly one URL per page, and ?utm_source=... is still this page. */
-    const route = ROUTES.find((r) => r.path === pathname)
-    const canonical = route ? abs(route.path) : `${ORIGIN}${pathname}`
-    upsertCanonical(canonical)
-
-    if (title) {
-      upsertMeta('meta[property="og:title"]', { property: 'og:title', content: title })
-      upsertMeta('meta[property="og:url"]', { property: 'og:url', content: canonical })
+    upsertMeta('og:url', abs(path))
+    let canonical = document.head.querySelector('link[rel="canonical"]')
+    if (!canonical) {
+      canonical = document.createElement('link')
+      canonical.rel = 'canonical'
+      document.head.appendChild(canonical)
     }
-
-    const indexable = route ? route.indexable : false
-    upsertMeta('meta[name="robots"]', {
-      name: 'robots',
-      content: indexable
-        ? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
-        : 'noindex, nofollow',
-    })
-  }, [pathname, title, description])
-
+    canonical.href = abs(path)
+    document.head.querySelectorAll('script[type="application/ld+json"]').forEach((el) => el.remove())
+    if (indexable) {
+      const schema = document.createElement('script')
+      schema.id = 'page-schema'
+      schema.type = 'application/ld+json'
+      schema.textContent = JSON.stringify(HOME_SCHEMA)
+      document.head.appendChild(schema)
+    }
+  }, [pathname])
   return null
 }

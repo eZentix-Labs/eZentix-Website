@@ -13,10 +13,7 @@ import Seo from '../components/Seo'
 export default function Home() {
   return (
     <>
-      <Seo
-        title="eZentix Labs — Software Company in Budbud, West Bengal | Zen OS"
-        description="eZentix Labs is a software company in Budbud, West Bengal — makers of Zen OS billing and restaurant software, plus websites and online presence for local shops."
-      />
+      <Seo />
       <main id="main">
         <Hero />
         <WhoWeAre />

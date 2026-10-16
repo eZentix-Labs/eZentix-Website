@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useApp } from '../context/AppContext'
+import { imageVariants } from '../data/image-variants'
 
 /* ------------------------------------------------------------------
  * OUR WORK — case studies.
@@ -42,12 +43,12 @@ export default function Work() {
                     intrinsic size is declared so the card reserves its space
                     before the file lands — this is the CLS fix, not decoration. */}
                 <picture>
-                  <source srcSet={item.cover.replace(/\.jpe?g$/i, '.webp')} type="image/webp" />
+                  <source srcSet={imageVariants[item.cover]?.srcSet || item.cover.replace(/\.jpe?g$/i, '.webp')} sizes="(max-width: 420px) calc(100vw - 40px), 380px" type="image/webp" />
                   <img
                     src={item.cover}
                     alt={`${t.work.coverAlt} — ${item.client}`}
-                    width="1600"
-                    height="900"
+                    width={imageVariants[item.cover]?.width || 1600}
+                    height={imageVariants[item.cover]?.height || 900}
                     loading="lazy"
                     decoding="async"
                   />
@@ -63,16 +64,18 @@ export default function Work() {
         </div>
       </div>
 
-      <CaseModal item={active} t={t} onClose={() => setOpenId(null)} />
+      {t.work.items.map((item) => (
+        <CaseModal key={item.id} item={item} open={active?.id === item.id} t={t} onClose={() => setOpenId(null)} />
+      ))}
     </section>
   )
 }
 
-function CaseModal({ item, t, onClose }) {
+function CaseModal({ item, open, t, onClose }) {
   const closeRef = useRef(null)
 
   useEffect(() => {
-    if (!item) return
+    if (!open) return
     const onKey = (e) => e.key === 'Escape' && onClose()
     document.addEventListener('keydown', onKey)
     closeRef.current?.focus()
@@ -81,12 +84,10 @@ function CaseModal({ item, t, onClose }) {
       document.removeEventListener('keydown', onKey)
       document.body.style.overflow = ''
     }
-  }, [item, onClose])
-
-  if (!item) return null
+  }, [open, onClose])
 
   return (
-    <div className="modal-scrim" onClick={onClose} role="presentation">
+    <div className="modal-scrim" hidden={!open} style={open ? undefined : { display: 'none' }} onClick={onClose} role="presentation">
       <div
         className="case-modal"
         role="dialog"
@@ -104,7 +105,7 @@ function CaseModal({ item, t, onClose }) {
           </button>
         </div>
 
-        <div className="case-modal__gallery">
+        {open && <div className="case-modal__gallery">
           <div className="case-modal__eyebrow case-modal__eyebrow--tight">{t.work.galleryLabel}</div>
           <div className="case-modal__grid">
             {item.gallery.map((g, i) => {
@@ -113,6 +114,8 @@ function CaseModal({ item, t, onClose }) {
                 <a key={img.src} href={img.src} target="_blank" rel="noopener">
                   <img
                     src={img.src}
+                    srcSet={imageVariants[img.src]?.srcSet}
+                    sizes="(max-width: 640px) calc((100vw - 88px) / 2), 215px"
                     alt={img.alt || `${item.client} — ${t.work.galleryLabel} (${i + 1}/${item.gallery.length})`}
                     width={img.width}
                     height={img.height}
@@ -123,7 +126,7 @@ function CaseModal({ item, t, onClose }) {
               )
             })}
           </div>
-        </div>
+        </div>}
 
         <div className="case-modal__block">
           <h3>{t.work.problemLabel}</h3>
