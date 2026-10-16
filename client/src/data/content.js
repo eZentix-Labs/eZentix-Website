@@ -18,6 +18,7 @@ export const content = {
 
     nav: {
       sections: 'Sections',
+      menu: 'Menu',
       signIn: 'Sign in',
       signUp: 'Get started',
       portal: 'My account',
@@ -48,7 +49,7 @@ export const content = {
       title: 'Our service offerings.',
       body: 'Tick whatever your shop needs. Everything below sits under one of three groups — you do not need to know which one, that is our job. No pricing here, just tell us what you want and we will talk you through it.',
       pickCount: (n) => (n === 1 ? '1 service selected' : `${n} services selected`),
-      pickCta: 'Ask for a quote on WhatsApp',
+      pickCta: 'Get a quote for these',
       pickNone: 'Nothing picked yet — that is fine too, scroll on.',
       pillars: [
         {
@@ -303,6 +304,7 @@ export const content = {
 
     nav: {
       sections: 'বিভাগ',
+      menu: 'মেনু',
       signIn: 'সাইন ইন',
       signUp: 'শুরু করুন',
       portal: 'আমার অ্যাকাউন্ট',
@@ -333,7 +335,7 @@ export const content = {
       title: 'আমাদের পরিষেবাগুলো।',
       body: 'দোকানের যা যা দরকার, টিক দিয়ে দিন। নিচের সবকিছু তিনটে ভাগের কোনো একটায় পড়ে — কোনটায় পড়ে সেটা আপনার জানার দরকার নেই, সেটা আমাদের কাজ। এখানে কোনো দাম নেই, শুধু বলুন কী চান, বাকিটা আমরা বুঝিয়ে বলব।',
       pickCount: (n) => `${n}টা পরিষেবা বেছেছেন`,
-      pickCta: 'WhatsApp-এ দাম জানতে চাই',
+      pickCta: 'এগুলোর জন্য দাম জানতে চাই',
       pickNone: 'এখনও কিছু বেছে নেননি — তাতেও চলবে, দেখতে থাকুন।',
       pillars: [
         {
@@ -588,6 +590,7 @@ export const content = {
 
     nav: {
       sections: 'अनुभाग',
+      menu: 'मेनू',
       signIn: 'साइन इन',
       signUp: 'शुरू करें',
       portal: 'मेरा खाता',
@@ -618,7 +621,7 @@ export const content = {
       title: 'हमारी सेवाएँ।',
       body: 'दुकान को जो चाहिए उस पर टिक कर दें। नीचे की हर चीज़ इन तीन समूहों में से किसी एक में आती है — किसमें आती है यह जानने की ज़रूरत नहीं, वह हमारा काम है। यहाँ कोई कीमत नहीं है, बस बताइए क्या चाहिए, बाकी हम समझा देंगे।',
       pickCount: (n) => `${n} सेवाएँ चुनी गईं`,
-      pickCta: 'WhatsApp पर कीमत पूछें',
+      pickCta: 'इनकी कीमत जानना चाहते हैं',
       pickNone: 'अभी कुछ नहीं चुना — कोई बात नहीं, आगे देखते रहिए।',
       pillars: [
         {

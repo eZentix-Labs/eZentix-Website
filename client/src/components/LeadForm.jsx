@@ -4,7 +4,7 @@ import { CONTACT } from '../data/content'
 import { api } from '../api/client'
 
 /* ------------------------------------------------------------------
- * LEAD CAPTURE — not rendered at the moment (see Contact.jsx).
+ * LEAD CAPTURE
  * ------------------------------------------------------------------
  * Posts to POST /api/leads. In production that is the Vercel function
  * in api/leads.js, which sends a WhatsApp alert to our number and adds a

@@ -117,6 +117,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Section links land below the sticky header, not under it. */
+  scroll-padding-top: 74px;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -3168,12 +3170,6 @@ ul {
   .topbar__tools {
     gap: 6px;
   }
-  /* Below this width the wordmark, three language chips, theme toggle
-     and Sign in cannot all fit honestly — the mark carries the brand
-     and the full name still appears in the hero copy and footer. */
-  .logo span:last-child {
-    display: none;
-  }
   .caps,
   .details,
   .plan__limits {
@@ -3407,5 +3403,235 @@ ul {
   }
   .case-modal__grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================================
+   Phones and small tablets
+   Everything below is layout for narrow screens only: the header
+   menu, the hero product grid, a sticky "quote on WhatsApp" bar,
+   a denser contact block and a shorter footer.
+   ============================================================ */
+
+/* Header menu — the button only exists below 1080px, where the inline
+   section links are hidden. */
+.topbar__menu-btn {
+  display: none;
+}
+
+.topbar__auth {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.topbar__menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: calc(100vh - 60px);
+  overflow-y: auto;
+  padding: 6px 0 20px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 24px 40px -24px rgba(0, 0, 0, 0.45);
+}
+
+.topbar__menu[hidden] {
+  display: none;
+}
+
+.topbar__menu-links {
+  display: grid;
+}
+
+.topbar__menu-links a {
+  display: block;
+  padding: 15px 2px;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+
+.topbar__menu-links a:active {
+  color: var(--purple);
+}
+
+/* Language + Sign in inside the menu: phones only. */
+.topbar__menu-tools {
+  display: none;
+}
+
+/* Product chips under the hero: phones only. */
+.eco-grid {
+  display: none;
+}
+
+@media (max-width: 1080px) {
+  .topbar__menu-btn {
+    display: grid;
+  }
+}
+
+@media (min-width: 1081px) {
+  .topbar__menu {
+    display: none !important;
+  }
+}
+
+@media (max-width: 980px) {
+  /* Two contact cards per row instead of four tall ones stacked. */
+  .contact-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Once something is ticked, the WhatsApp button follows the reader
+     down the list instead of waiting below all three groups. */
+  .pick-bar--active {
+    position: sticky;
+    bottom: 12px;
+    z-index: 20;
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+@media (max-width: 620px) {
+  html {
+    scroll-padding-top: 60px;
+  }
+
+  /* Header: brand name back in, language + Sign in into the menu. */
+  .topbar__tools > .topbar__lang,
+  .topbar__tools > .topbar__auth {
+    display: none;
+  }
+  .topbar__menu-tools {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 18px;
+  }
+  .topbar__menu-tools .segmented button {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+  .topbar__menu-tools .btn--sm {
+    padding: 12px 22px;
+    font-size: 14.5px;
+  }
+
+  /* Hero: the orbit gives way to a tidy grid of the same products. */
+  .orbit {
+    display: none;
+  }
+  .eco-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 4px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .eco-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 12px 6px 6px;
+    border-radius: var(--r-pill);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    font-family: var(--font-display);
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .eco-chip__glyph {
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--purple-tint);
+    color: var(--purple);
+  }
+  .eco-chip__glyph svg {
+    width: 14px;
+    height: 14px;
+  }
+  .hero__cta .btn {
+    flex: 1 1 0;
+    justify-content: center;
+  }
+
+  /* Who we are: left-aligned reading text, and the highlighted phrase
+     wraps with the sentence instead of breaking it apart. */
+  .who-card {
+    padding: 30px 22px;
+    text-align: left;
+  }
+  .who-card__title {
+    max-width: none;
+    font-size: 27px;
+  }
+  .who-card__body {
+    font-size: 15.5px;
+  }
+  .who-card__title .script,
+  .head h2 .script {
+    display: inline;
+  }
+
+  /* Sticky picker bar: count above, full-width button below. */
+  .pick-bar {
+    padding: 12px 14px;
+    gap: 10px;
+    font-size: 13.5px;
+  }
+  .pick-bar--active {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  /* Slider dots: same look, a finger-sized target. */
+  .banners__dot {
+    position: relative;
+  }
+  .banners__dot::before {
+    content: '';
+    position: absolute;
+    inset: -16px -5px;
+  }
+
+  /* Contact: compact cards. */
+  .contact-actions {
+    gap: 10px;
+  }
+  .contact-card {
+    padding: 14px;
+  }
+  .contact-card__v {
+    font-size: 13.5px;
+  }
+
+  /* Footer: links in two columns with real tap targets. */
+  .footer__grid {
+    gap: 26px;
+  }
+  .footer__links {
+    grid-template-columns: 1fr 1fr;
+    gap: 0 18px;
+  }
+  .footer__links a {
+    display: block;
+    padding: 9px 0;
+  }
+  .footer__where a {
+    display: inline-block;
+    padding: 9px 0;
   }
 }

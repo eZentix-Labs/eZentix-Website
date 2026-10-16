@@ -1,5 +1,6 @@
 import { useApp } from '../context/AppContext'
 import { CONTACT, SOCIAL } from '../data/content'
+import LeadForm from './LeadForm'
 import Logo from './Logo'
 
 /* One place builds the WhatsApp deep link, so the number and the opening
@@ -79,10 +80,9 @@ const SOCIAL_ICONS = {
   linkedin: LinkedInIcon,
 }
 
-/* The enquiry form (LeadForm.jsx → api/leads.js) is switched off until its
-   WhatsApp and Calendar delivery is set up — see LEADS.md. Every way to
-   reach us here is direct and costs nothing. Services ticked in "What we
-   do" ride along in the WhatsApp message instead. */
+/* Contact cards on the left, the enquiry form (LeadForm.jsx → api/leads.js,
+   setup in LEADS.md) on the right. To take the form down again, drop
+   <LeadForm /> and add the lead--solo class to the wrapper. */
 export default function Contact() {
   const { t, selectedServices } = useApp()
 
@@ -93,7 +93,7 @@ export default function Contact() {
 
   return (
     <section className="band" id="talk">
-      <div className="wrap lead lead--solo">
+      <div className="wrap lead">
         <div>
           <h2 style={{ fontSize: 'clamp(27px, 4vw, 38px)' }}>{t.lead.title}</h2>
           <p className="lede" style={{ marginTop: 14 }}>{t.lead.sub}</p>
@@ -149,6 +149,8 @@ export default function Contact() {
             </div>
           </div>
         </div>
+
+        <LeadForm />
       </div>
     </section>
   )

@@ -201,6 +201,24 @@ function OrbitServices() {
   )
 }
 
+/* Phones get the same products as a plain grid of chips: eleven labels
+   cannot share a 300px orbit without running into each other and the
+   mark. CSS shows one or the other. */
+function EcoGrid() {
+  return (
+    <ul className="eco-grid" aria-hidden="true">
+      {ORBIT_LEVELS.flatMap((level) => level.items).map((item) => (
+        <li className="eco-chip" key={item.key}>
+          <span className="eco-chip__glyph">
+            <item.Icon />
+          </span>
+          {item.label}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 export default function Hero() {
   const { t } = useApp()
 
@@ -238,6 +256,7 @@ export default function Hero() {
         </div>
 
         <OrbitServices />
+        <EcoGrid />
       </div>
     </section>
   )
