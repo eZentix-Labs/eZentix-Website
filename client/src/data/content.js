@@ -29,6 +29,7 @@ export const content = {
     },
 
     hero: {
+      kicker: 'eZentix Labs · Software company in Budbud, West Bengal',
       title: ['Powered by AI,', 'guided by technical experts.'],
       sub: 'We sort the chaos of your offline business and transition you *seamlessly* online.',
       body: 'eZentix Labs builds and runs the software your shop needs — a point of sale, a booking system, an inventory tracker — and then stays on to run your online presence and talk you through the business decisions. The machine does the counting. We do the caring.',
@@ -47,7 +48,7 @@ export const content = {
       title: 'Our service offerings.',
       body: 'Tick whatever your shop needs. Everything below sits under one of three groups — you do not need to know which one, that is our job. No pricing here, just tell us what you want and we will talk you through it.',
       pickCount: (n) => (n === 1 ? '1 service selected' : `${n} services selected`),
-      pickCta: 'Get a quote for these',
+      pickCta: 'Ask for a quote on WhatsApp',
       pickNone: 'Nothing picked yet — that is fine too, scroll on.',
       pillars: [
         {
@@ -128,7 +129,7 @@ export const content = {
     pos: {
       eyebrow: "One of our products — the one that's live today",
       title: 'Zen OS',
-      sub: 'One operating system for the whole shop — billing, orders, stock and reporting on a single platform.',
+      sub: 'Billing and restaurant software from eZentix Labs — one operating system for the whole shop: billing, orders, stock and reporting on a single platform.',
       body: 'Zen OS is not just a point of sale. It folds billing, order-taking, kitchen tickets, inventory, table management and daily reporting into one unified system, so the shop runs on one screen instead of four disconnected tools. Order at the table. Ticket in the kitchen. Bill on WhatsApp. Every table on your phone while you are sitting at home. Its subscription is separate from anything you pick from our services above — start with just this, on day one, and add the rest whenever you are ready.',
       featuresTitle: 'What is inside',
       bizFilterLabel: "What's your business?",
@@ -274,7 +275,7 @@ export const content = {
     },
 
     footer: {
-      blurb: 'End-to-end online solutions for shops and small businesses — billing software, websites, e-commerce, social media, branding and content.',
+      blurb: 'eZentix Labs is a software company in Budbud (Bud Bud), Purba Bardhaman, West Bengal — Zen OS billing software, websites, e-commerce, social media, branding and content for shops and small businesses.',
       cta: 'Start a conversation',
       exploreTitle: 'Explore',
       reachTitle: 'Reach us',
@@ -313,6 +314,7 @@ export const content = {
     },
 
     hero: {
+      kicker: 'eZentix Labs · বুদবুদ, পশ্চিমবঙ্গের সফটওয়্যার কোম্পানি',
       title: ['AI-এর শক্তিতে,', 'টেকনিক্যাল বিশেষজ্ঞদের পরামর্শে।'],
       sub: 'আপনার অফলাইন ব্যবসার বিশৃঙ্খলা আমরা গুছিয়ে দিই, আর *নির্বিঘ্নে* অনলাইনে নিয়ে যাই।',
       body: 'eZentix Labs আপনার দোকানের দরকারি সফটওয়্যার বানায় আর চালায় — বিলিং সিস্টেম, বুকিং, স্টক হিসাব — তারপর থেকে যায় আপনার অনলাইন উপস্থিতি সামলাতে আর ব্যবসার সিদ্ধান্তে পাশে থাকতে। হিসাব করবে মেশিন। খেয়াল রাখব আমরা।',
@@ -331,7 +333,7 @@ export const content = {
       title: 'আমাদের পরিষেবাগুলো।',
       body: 'দোকানের যা যা দরকার, টিক দিয়ে দিন। নিচের সবকিছু তিনটে ভাগের কোনো একটায় পড়ে — কোনটায় পড়ে সেটা আপনার জানার দরকার নেই, সেটা আমাদের কাজ। এখানে কোনো দাম নেই, শুধু বলুন কী চান, বাকিটা আমরা বুঝিয়ে বলব।',
       pickCount: (n) => `${n}টা পরিষেবা বেছেছেন`,
-      pickCta: 'এগুলোর জন্য দাম জানতে চাই',
+      pickCta: 'WhatsApp-এ দাম জানতে চাই',
       pickNone: 'এখনও কিছু বেছে নেননি — তাতেও চলবে, দেখতে থাকুন।',
       pillars: [
         {
@@ -558,7 +560,7 @@ export const content = {
     },
 
     footer: {
-      blurb: 'দোকান আর ছোট ব্যবসার জন্য শুরু থেকে শেষ পর্যন্ত অনলাইন সমাধান — বিলিং সফটওয়্যার, ওয়েবসাইট, ই-কমার্স, সোশ্যাল মিডিয়া, ব্র্যান্ডিং আর কনটেন্ট।',
+      blurb: 'eZentix Labs — বুদবুদ, পূর্ব বর্ধমান, পশ্চিমবঙ্গের একটি সফটওয়্যার কোম্পানি। দোকান আর ছোট ব্যবসার জন্য শুরু থেকে শেষ পর্যন্ত অনলাইন সমাধান — বিলিং সফটওয়্যার, ওয়েবসাইট, ই-কমার্স, সোশ্যাল মিডিয়া, ব্র্যান্ডিং আর কনটেন্ট।',
       cta: 'কথা শুরু করুন',
       exploreTitle: 'ঘুরে দেখুন',
       reachTitle: 'যোগাযোগ',
@@ -597,6 +599,7 @@ export const content = {
     },
 
     hero: {
+      kicker: 'eZentix Labs · बुदबुद, पश्चिम बंगाल की सॉफ्टवेयर कंपनी',
       title: ['AI की ताकत से,', 'तकनीकी विशेषज्ञों की सलाह से।'],
       sub: 'आपके ऑफलाइन कारोबार की अस्त-व्यस्तता हम सुलझाते हैं, और आपको *सहजता से* ऑनलाइन ले जाते हैं।',
       body: 'eZentix Labs आपकी दुकान के लिए ज़रूरी सॉफ्टवेयर बनाता और चलाता है — बिलिंग सिस्टम, बुकिंग, स्टॉक का हिसाब — और फिर आपकी ऑनलाइन मौजूदगी संभालने और कारोबारी फैसलों में साथ देने के लिए बना रहता है। गिनती मशीन करेगी। ध्यान हम रखेंगे।',
@@ -615,7 +618,7 @@ export const content = {
       title: 'हमारी सेवाएँ।',
       body: 'दुकान को जो चाहिए उस पर टिक कर दें। नीचे की हर चीज़ इन तीन समूहों में से किसी एक में आती है — किसमें आती है यह जानने की ज़रूरत नहीं, वह हमारा काम है। यहाँ कोई कीमत नहीं है, बस बताइए क्या चाहिए, बाकी हम समझा देंगे।',
       pickCount: (n) => `${n} सेवाएँ चुनी गईं`,
-      pickCta: 'इनकी कीमत जानना चाहते हैं',
+      pickCta: 'WhatsApp पर कीमत पूछें',
       pickNone: 'अभी कुछ नहीं चुना — कोई बात नहीं, आगे देखते रहिए।',
       pillars: [
         {
@@ -842,7 +845,7 @@ export const content = {
     },
 
     footer: {
-      blurb: 'दुकानों और छोटे कारोबारों के लिए शुरू से आखिर तक ऑनलाइन समाधान — बिलिंग सॉफ्टवेयर, वेबसाइट, ई-कॉमर्स, सोशल मीडिया, ब्रांडिंग और कंटेंट।',
+      blurb: 'eZentix Labs — बुदबुद, पूर्व बर्धमान, पश्चिम बंगाल की एक सॉफ्टवेयर कंपनी। दुकानों और छोटे कारोबारों के लिए शुरू से आखिर तक ऑनलाइन समाधान — बिलिंग सॉफ्टवेयर, वेबसाइट, ई-कॉमर्स, सोशल मीडिया, ब्रांडिंग और कंटेंट।',
       cta: 'बातचीत शुरू करें',
       exploreTitle: 'देखें',
       reachTitle: 'संपर्क',

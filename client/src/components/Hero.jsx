@@ -208,6 +208,9 @@ export default function Hero() {
     <section className="hero">
       <div className="wrap hero__grid">
         <div>
+          {/* Says, in plain words above the headline, what Google needs to
+              match: the brand and what and where it is. */}
+          <p className="eyebrow hero__kicker">{t.hero.kicker}</p>
           <h1>
             {t.hero.title.map((line, i) => (
               <span key={i}>{line}</span>

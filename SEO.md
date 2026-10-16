@@ -89,6 +89,31 @@ If you add a public route, add it to `ROUTES` in `site.js` and to the
 
 ---
 
+## Keyword targets
+
+**On the page now** (16 Oct 2026): the title is *"eZentix Labs — Software
+Company in Budbud, West Bengal | Zen OS"*; the meta description, a visible line
+above the headline, the footer and the Zen OS section all say what the company
+is and where; the JSON-LD gives `alternateName`s (eZentix, Ezentix Labs, ZenOS),
+the PIN code and the service area (Budbud, Purba Bardhaman, West Bengal). A
+`<meta name="keywords">` tag lists the target searches too — Google ignores
+that tag entirely; it is there for Bing and as a record.
+
+No page change can put a site first on its own. Each search below needs the
+site **indexed** first (Part 2A), and then something different:
+
+| Search | Realistic outcome | What actually moves it |
+|---|---|---|
+| eZentix, eZentix Labs | **#1 within weeks of indexing.** Nobody else uses the name. Today Google "corrects" it to EzTix / Ezentis because it has never seen the site | Search Console + Request Indexing; Instagram, LinkedIn and the Business Profile all linking to www.ezentix.com |
+| software company in Budbud, Budbud / Bud Bud software company | **Top results within 1–2 months.** No other page targets it | Indexing, plus the Google Business Profile located in Budbud |
+| software company near me | **Only via the Business Profile map pack**, and only for people near Budbud. No change to the website affects it | Verified profile, right categories, reviews from clients, weekly posts (Part 2B) |
+| Zen OS, Zen OS software | **Hard, slow.** "Zen OS" already names a Linux desktop, the Zen browser and Actian Zen. Expect "Zen OS billing software", "Zen OS restaurant software" and "Zen OS eZentix" first | A dedicated Zen OS page, the Hotel Khoai case study as its own page, clients mentioning "Zen OS by eZentix Labs" |
+
+Spellings: Wikipedia uses **"Bud Bud"** (two words); the site
+uses both so either search matches.
+
+---
+
 ## Part 2 — only you can do these
 
 ### A. Verify Google Search Console (20 minutes, do this today)

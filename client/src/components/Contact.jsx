@@ -1,6 +1,5 @@
 import { useApp } from '../context/AppContext'
 import { CONTACT, SOCIAL } from '../data/content'
-import LeadForm from './LeadForm'
 import Logo from './Logo'
 
 /* One place builds the WhatsApp deep link, so the number and the opening
@@ -80,16 +79,21 @@ const SOCIAL_ICONS = {
   linkedin: LinkedInIcon,
 }
 
+/* The enquiry form (LeadForm.jsx → api/leads.js) is switched off until its
+   WhatsApp and Calendar delivery is set up — see LEADS.md. Every way to
+   reach us here is direct and costs nothing. Services ticked in "What we
+   do" ride along in the WhatsApp message instead. */
 export default function Contact() {
-  const { t } = useApp()
+  const { t, selectedServices } = useApp()
 
   const wa = waLink(
-    'Hello eZentix Labs — I run a business and I would like to talk about going online.',
+    'Hello eZentix Labs — I run a business and I would like to talk about going online.' +
+      (selectedServices.length ? ` I am interested in: ${selectedServices.join(', ')}.` : ''),
   )
 
   return (
     <section className="band" id="talk">
-      <div className="wrap lead">
+      <div className="wrap lead lead--solo">
         <div>
           <h2 style={{ fontSize: 'clamp(27px, 4vw, 38px)' }}>{t.lead.title}</h2>
           <p className="lede" style={{ marginTop: 14 }}>{t.lead.sub}</p>
@@ -145,8 +149,6 @@ export default function Contact() {
             </div>
           </div>
         </div>
-
-        <LeadForm />
       </div>
     </section>
   )

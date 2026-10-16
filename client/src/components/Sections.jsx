@@ -1,5 +1,6 @@
 import { useApp } from '../context/AppContext'
 import Rich from './Rich'
+import { waLink } from './Contact'
 
 /* ------------------------------------------------------------------ */
 export function WhoWeAre() {
@@ -21,9 +22,9 @@ export function WhoWeAre() {
 
 /* ------------------------------------------------------------------
  * "What we do" doubles as a checkbox picker — visitors tick what they
- * want, and the count/CTA bar carries the selection down to the lead
- * form. No pricing shown here on purpose; this is a conversation
- * starter, not a checkout.
+ * want, and the count/CTA bar opens WhatsApp with the selection already
+ * written into the message. No pricing shown here on purpose; this is a
+ * conversation starter, not a checkout.
  * ------------------------------------------------------------------ */
 export function WhatWeDo() {
   const { t, selectedServices, toggleService } = useApp()
@@ -72,7 +73,12 @@ export function WhatWeDo() {
             {count > 0 ? t.what.pickCount(count) : t.what.pickNone}
           </span>
           {count > 0 && (
-            <a className="btn btn--primary" href="#talk">
+            <a
+              className="btn btn--primary"
+              href={waLink(`Hello eZentix Labs — I would like a quote for: ${selectedServices.join(', ')}.`)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {t.what.pickCta}
             </a>
           )}

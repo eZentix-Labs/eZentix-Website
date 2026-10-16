@@ -331,6 +331,10 @@ ul {
   color: #fff;
 }
 
+.hero__kicker {
+  margin-bottom: 18px;
+}
+
 .eyebrow {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -1953,6 +1957,12 @@ ul {
   grid-template-columns: 0.9fr 1.1fr;
   gap: 52px;
   align-items: start;
+}
+
+/* Contact section without the enquiry form beside it. */
+.lead--solo {
+  grid-template-columns: 1fr;
+  max-width: 960px;
 }
 
 /* ============================================================

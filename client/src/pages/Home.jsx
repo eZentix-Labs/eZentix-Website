@@ -14,8 +14,8 @@ export default function Home() {
   return (
     <>
       <Seo
-        title="eZentix Labs — Bring Your Offline Business Online | Zen OS"
-        description="eZentix Labs helps shops, restaurants and clinics in West Bengal move online. Zen OS billing, a real online presence, and hands-on business guidance in one subscription."
+        title="eZentix Labs — Software Company in Budbud, West Bengal | Zen OS"
+        description="eZentix Labs is a software company in Budbud, West Bengal — makers of Zen OS billing and restaurant software, plus websites and online presence for local shops."
       />
       <Hero />
       <WhoWeAre />

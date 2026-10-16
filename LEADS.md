@@ -1,5 +1,14 @@
 # Website enquiries → WhatsApp + Google Calendar
 
+> **Status: switched off.** The form is not shown on the site right now —
+> visitors reach us directly by WhatsApp, phone, email and Instagram, and the
+> service picker opens WhatsApp with their choices filled in. To bring the
+> form back: complete the setup below, render `<LeadForm />` again in the
+> contact section (`client/src/components/Contact.jsx`, and drop the
+> `lead--solo` class there), and redeploy. The function in
+> `client/api/leads.js` stays deployed in the meantime and does nothing
+> until it is configured.
+
 Every time someone sends the "Tell us what you are running" form on
 www.ezentix.com, `client/api/leads.js` (a Vercel function) does two things
 at once:
